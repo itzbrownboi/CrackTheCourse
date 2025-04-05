@@ -5,59 +5,78 @@ body {
 }
 
 .container {
-display: flex;
-height: 100vh;
-width: 100vw;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 }
 
 .left-half{
     flex: 1;
-padding: 5%;
-box-sizing: border-box;
-padding-top: 18%;
-text-align: center;
-font-size: 20px;
-color:rgb(52, 4, 135);
-}
-.right-half {
-flex: 1;
-padding: 5%;
-box-sizing: border-box;
-text-align: center;
-font-size: 18px;
-font-weight: bold;
-color:rgb(52, 4, 135);
-}
-
-.user-type{
     display: flex;
+    flex-direction: column; 
     justify-content: center;
-    gap: 10%;
-    
-}
-.divider {
-width: 2px;
-background-color: #d3d3d3; /* light grey */
+    align-items: center;       
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 20px;
+    color:rgb(52, 4, 135);
 }
 
 .logo{
-    width: 50%;
-    height: 50%;
+    width: 200px;
+    height: auto;
     
 }
+
+.divider {
+    width: 2px;
+    background-color: #d3d3d3; /* light grey */
+}
+
+.right-half {
+    flex: 1;
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color:rgb(52, 4, 135);
+}
+
+.user-type{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10%;
+    margin-bottom: 20px; 
+}
+
 .tutor, .student, .admin{
-    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.admin {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+.image-box {
+    border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
-    height: 100%;
     width: 100%;
+    margin-bottom: 10px; 
 }
+
 button{
     color: white;
     background-color: rgb(52, 4, 135);
     padding: 10px;
     border-radius: 5px;
-
 }
 button:hover{
     color:  rgb(52, 4, 135);
@@ -66,15 +85,29 @@ button:hover{
     border-radius: 5px;
 }
 .pic{
-    width: 80%;
-    height: 80%;
+    width: 120px; 
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 .login-box{
     display: flex;
-    gap: 90px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
+.login-box p {
+    margin: 0;
+    font-weight: bold;
+    color: black;
+}
+  
 .return-user{
+    color: black;
     font-size: 15px;
     text-align: center;
     font-weight: normal;
+    margin-top: 60px;
 }
