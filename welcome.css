@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+display: flex;
+height: 100vh;
+width: 100vw;
+}
+
+.left-half{
+    flex: 1;
+padding: 5%;
+box-sizing: border-box;
+padding-top: 18%;
+text-align: center;
+font-size: 20px;
+color:rgb(52, 4, 135);
+}
+.right-half {
+flex: 1;
+padding: 5%;
+box-sizing: border-box;
+text-align: center;
+font-size: 18px;
+font-weight: bold;
+color:rgb(52, 4, 135);
+}
+
+.user-type{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    
+}
+.divider {
+width: 2px;
+background-color: #d3d3d3; /* light grey */
+}
+
+.logo{
+    width: 50%;
+    height: 50%;
+    
+}
+.tutor, .student, .admin{
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+button{
+    color: white;
+    background-color: rgb(52, 4, 135);
+    padding: 10px;
+    border-radius: 5px;
+
+}
+button:hover{
+    color:  rgb(52, 4, 135);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.pic{
+    width: 80%;
+    height: 80%;
+}
+.login-box{
+    display: flex;
+    gap: 90px;
+}
+.return-user{
+    font-size: 15px;
+    text-align: center;
+    font-weight: normal;
+}
