@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- Desktop View -->
+        <div class="hidden-mobile desktop-view">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <div class="logo">
+                        <img src="images/logo.jpeg" 
+                            alt="logo" 
+                            class="logo-icon">
+                    </div>
+                    
+                    <nav class="nav-menu">
+                        <div class="nav-item">
+                            <i class="fa-solid fa-house fa-lg"></i>
+                            <span>Home</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fa-solid fa-circle-play fa-lg"></i>
+                            <span>My Tutors</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fa-regular fa-message fa-lg"></i>
+                            <span>Messages</span>
+                        </div>
+                        <div class="nav-item active">
+                            <i class="fa-regular fa-user fa-lg"></i>
+                            <span>My Profile</span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="content-container">
+                    <div class="edit-button">
+                        <i data-lucide="edit-2"></i>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <img src="images/student.webp" 
+                             alt="Profile" 
+                             class="profile-image">
+                        <h1 class="profile-name">Stu Dent</h1>
+                        <p class="profile-info">3rd Year Computer Science Major</p>
+                        <p class="profile-info">University of Calgary</p>
+                    </div>
+
+                    <div class="courses-grid">
+                        <div class="course-section">
+                            <h2>Strong Courses</h2>
+                            <div class="course-list">
+                                <p>MATH 265, CPSC 233, CPSC 251</p>
+                            </div>
+                        </div>
+                        <div class="course-section">
+                            <h2>Weak Courses</h2>
+                            <div class="course-list">
+                                <p>CPSC 355, SENG 513, MATH 211</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-section">
+                        <h2>Activity</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i data-lucide="edit-2"></i>
+                                <span>Sent Request to Omar</span>
+                            </div>
+                            <div class="activity-item">
+                                <i data-lucide="edit-2"></i>
+                                <span>Tutoring with Tina</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile View -->
+        <div class="mobile-view">
+            <div class="mobile-content">
+                <div class="edit-button">
+                    <i data-lucide="edit-2"></i>
+                </div>
+                
+                <div class="profile-section">
+                    <img src="images/student.webp" 
+                         alt="Profile" 
+                         class="profile-image">
+                    <h1 class="profile-name">Stu Dent</h1>
+                    <p class="profile-info">3rd Year Computer Science Major</p>
+                    <p class="profile-info">University of Calgary</p>
+                </div>
+
+                <div class="mobile-courses">
+                    <div class="course-section">
+                        <h2>Weak Courses</h2>
+                        <div class="course-list">
+                            <p>CPSC 355, SENG 513, MATH 211</p>
+                        </div>
+                    </div>
+                    <div class="course-section">
+                        <h2>Strong Courses</h2>
+                        <div class="course-list">
+                            <p>MATH 265, CPSC 233, CPSC 251</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-section">
+                    <h2>Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i data-lucide="edit-2"></i>
+                            <span>Sent Request to Omar</span>
+                        </div>
+                        <div class="activity-item">
+                            <i data-lucide="edit-2"></i>
+                            <span>Tutoring with Tina</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav">
+                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-circle-play"></i>
+                <i class="fa-regular fa-message"></i>
+                <i class="fa-regular fa-user"></i>
+            </div>
+        </div>
+    </div>
+
+   <script>
+   </script>
+</body>
+</html>
