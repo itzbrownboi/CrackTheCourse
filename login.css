@@ -22,55 +22,68 @@ body {
     font-size: 20px;
     color:rgb(52, 4, 135);
 }
-
+.sell{
+    font-weight:lighter;
+    font-size: small;
+}
 .logo{
     width: 200px;
     height: auto;
+    
 }
-
+.login-logo{
+    width: 100px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    
+}
+.welcome{
+    font-size: smaller;
+    margin: 0;
+    padding: 1%;
+}
+.continue{
+    margin-top: 0;
+    padding: 1%;
+    font-size: small;
+    font-weight:100;
+}
 
 
 .divider {
     width: 2px;
     background-color: #d3d3d3; /* light grey */
 }
-
+.forgot{
+    text-align: right;
+    font-size: x-small;
+    font-weight: lighter;
+}
 .right-half {
-    flex: 1;
-    padding: 5%;
+    flex: 2;
+    padding-top: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
     box-sizing: border-box;
     text-align: center;
     font-size: 22px;
     font-weight: bold;
     color:rgb(52, 4, 135);
+    
 }
 
-.user-type{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.user-info{
     gap: 10%;
     margin-bottom: 20px; 
+    text-align: left;
+    font-size: medium;
+    font-weight: lighter;
 }
 
-.tutor, .student, .admin{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 250px;
-    margin: 0 auto;
-}
-
-.admin {
-    grid-column: 1 / -1;
-    justify-self: center;
-}
-
-.image-box {
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 10px;
+.email-input, .password-input{
     width: 100%;
-    margin-bottom: 10px; 
+    height: 30px;
 }
 
 button{
@@ -78,6 +91,7 @@ button{
     background-color: rgb(52, 4, 135);
     padding: 10px;
     border-radius: 5px;
+    width: 70%;
 }
 button:hover{
     color:  rgb(52, 4, 135);
@@ -85,31 +99,15 @@ button:hover{
     padding: 10px;
     border-radius: 5px;
 }
-.pic{
-    width: 120px; 
-    height: 120px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-.login-box{
+
+  
+.new-user{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-
-.login-box p {
-    margin: 0;
-    font-weight: bold;
     color: black;
-}
-  
-.return-user{
-    color: black;
-    font-size: 15px;
+    font-size: x-small;
     text-align: center;
-    font-weight: normal;
-    margin-top: 60px;
+    font-weight: lighter;
 }
-
