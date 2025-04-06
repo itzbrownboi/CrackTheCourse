@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-half">
+      <!-- Left content goes here -->
+       <div >
+        <img class="logo" src="images/logo.jpeg" alt="App logo">
+       </div>
+       <div class="about-us">
+        <p>Convert that good GPA to Money!</p>
+        <p class="sell">CrackTheCourse provides opportunities for University students to help their peers while earning an income.</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="right-half">
+      <!-- Right content goes here -->
+       <div class="right-content">
+            <div >
+                <img class="login-logo" src="images/logo.jpeg" alt="App logo">
+                <p class="welcome">Welcome Back</p>
+                <p class="continue" >Login to continue</p>
+           </div><br><br>
+           <form id="login-form" class="user-info">
+            <label for="email" >Email Address:</label><br>
+            <input class="email-input" type="email" id="email" name="email" required><br><br>
+          
+            <label for="password">Password:</label><br>
+            <input class="password-input" type="password" id="password" name="password" required>
+            <p class="forgot">Forgot Password?</p> 
+            <button type="submit" class="login-button">LOG IN</button> 
+           </form>
+           
+           <div class="new-user">
+                <p>Don't have an account?</p>  <p>     Sign up now</p>
+           </div>
+       </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async function (e) {
+  e.preventDefault(); 
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      // Store email in localStorage
+      localStorage.setItem('userEmail', email);
+      window.location.href = 'profile.html';
+    } else {
+      alert(result.message || 'Login failed');
+    }
+  } catch (error) {
+    alert('Error logging in');
+    console.error(error);
+  }
+});
+  </script>
+</body>
+</html>
