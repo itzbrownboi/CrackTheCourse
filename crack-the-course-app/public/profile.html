@@ -189,11 +189,11 @@
                     profileName.textContent = `${data.firstName} ${data.lastName}`;
                     profileInfo.textContent = data.educationLevel;
 
-                    // Show the appropriate profile info based on the role
+                    
                     if (data.role === 'tutor' || data.role === 'teacher') {
-                        // Tutor profile (show courses they teach)
+                       
                         studentCoursesStrong.style.display = 'none';
-                        studentCoursesMobileWeak.style.display = 'none';
+                        studentCoursesWeak.style.display = 'none';
                         tutorCourses.style.display = 'block';
                         tutorCourses.innerHTML = `
                             <h2>Courses I Teach</h2>
@@ -213,7 +213,6 @@
                             </div>
                             `;
                     } else if (data.role === 'student') {
-                        // Student profile (show weak/strong courses)
                         studentCoursesStrong.style.display = 'block';
                         studentCoursesStrong.innerHTML = `
                                 <h2>Strong Courses</h2>
