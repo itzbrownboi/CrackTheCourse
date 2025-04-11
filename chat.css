@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.chat-logo, .person-logo, .student-logo{
+    width: 70px;
+    height: auto;
+}
+.student{
+    margin-bottom: 20%;
+}
+.chat{
+    margin-bottom: 150%;
+}
+.logo{
+    width: 130px;
+    height: auto;
+    margin-bottom: 90%;
+}
+.divider {
+    width: 2px;
+    background-color: #d3d3d3; /* light grey */
+}
+.logo-text{
+    color: black;
+}
+
+.chat-search{
+    width: 100%;
+    margin-bottom: 10%;
+}
+.chat-student{
+    width: 100%;
+    height: 10%;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: 3%;
+    margin-bottom: 5%;
+    display: flex;
+}
+.profile-pic{
+    width: 15%;
+    height: auto;
+}
+
+.student-courses{
+    padding: 3%;
+    background-color: rgb(52, 4, 135);;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    font-size: xx-small;
+    height: 5%;
+    width: 20%;
+}
+
+.student-desc{
+    width:100%;
+    font-size: medium;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.student-desc p1{
+    font-size: small;
+    color: gray;
+}
+.left-part{
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;       
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+    color:rgb(52, 4, 135);
+}
+
+.middle-part {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+    font-size: 22px;
+    font-weight: bold;
+    color:black;
+}
+
+.right-part{
+    padding-top: 1%;
+    font-size: 22px;
+    font-weight: bold;
+    color:rgb(52, 4, 135);
+    
+}
+
+.messages{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.rec-messages{
+    color: white;
+    background-color: grey;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    text-align: left;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    display: inline-block;
+    align-self: flex-start;
+
+}
+.sent-messages{
+    color: white;
+    background-color: rgb(52, 4, 135);
+    margin-bottom: 2%;
+    border-radius: 20px;
+    text-align: right;
+    padding: 1%;
+    display: inline-block;
+    padding-left: 3%;
+    padding-right: 3%;
+    align-self: flex-start;
+    margin-left: auto;
+
+}
+
+

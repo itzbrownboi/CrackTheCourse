@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-part" style="flex: 10; background-color: white;">
+        <div >
+            <img class="logo" src="logo.jpeg" alt="App logo">
+        </div>
+        <div class="student">
+            <img class="student-logo" src="student.jpg" alt="Student logo">
+            <p class="logo-text">My Students</p>
+        </div>
+        <div class="chat">
+            <img class="chat-logo" src="chat.png" alt="Chat logo">
+            <p class="logo-text">Messages</p>
+        </div>
+        <div class="person">
+            <img class="person-logo" src="person.png" alt="Person logo">
+            <p class="logo-text">My Profile</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="middle-part" style="flex: 45; background-color: white;">
+        <p>Chats</p>
+        <input type="text" placeholder="Search by name..." class="chat-search">
+        <div class="chat-student">
+            <img class="profile-pic" src="profile.png" alt="Student-profile">
+            <div class="student-desc">
+                <div style="display: flex; gap: 10%;">
+                    <p>Stu Dent</p>
+                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
+                </div>
+                <div style="display: flex;gap: 10%;">
+                    <p1>Hi Stu Dent, are you free...</p1>
+                    <div style="background-color: rgb(52, 4, 135); color: white; font-size: small; border-radius: 50%; text-align: center; width: 8%;height: 15%;"> 2</div>
+                </div> 
+            </div>
+            <div class="student-courses"> CPSC 251</div>
+        </div>
+        <div class="chat-student">
+            <img class="profile-pic" src="profile.png" alt="Student-profile">
+            <div class="student-desc">
+                <div style="display: flex; gap: 10%;">
+                    <p>Stu Dent</p>
+                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
+                </div>
+                <div style="display: flex;gap: 10%; color: white; padding: 3%; background-color:  rgb(52, 4, 135); font-size: small; border-radius: 10px; text-align: center;justify-content: center;">
+                   Request
+                 </div> 
+            </div>
+            <div class="student-courses"> CPSC 251</div>
+        </div>
+        <div class="chat-student">
+            <img class="profile-pic" src="profile.png" alt="Student-profile">
+            <div class="student-desc">
+                <div style="display: flex; gap: 10%;">
+                    <p>Stu Dent</p>
+                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
+                </div>
+                <div style="display: flex;gap: 10%; color: white; padding: 3%; background-color:  grey
+                ; font-size: small; border-radius: 10px; text-align: center;justify-content: center;">
+                    Request Sent
+                  </div> 
+            </div>
+            <div class="student-courses"> CPSC 251</div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="right-part" style="flex: 75; background-color: white; display:flex; flex-direction: column; ">
+        <div class="stu-desc" style="flex: 10; padding: 2%; display: flex; gap: 5%; color: black; border-bottom: 2px solid lightgray;">
+            <img class="profile-pic" src="profile.png" alt="Student-profile">
+            <p>Stu Dent</p>
+            <div class="student-courses" style="font-size: medium; " > CPSC 251</div>
+        </div>
+        <div class="divider"></div>
+        <div class="messages" style="flex: 80; display:flex; flex-direction: column;"> 
+            <p style="text-align: center; color: black;">Monday</p>
+            <div class="rec-messages">Hi tina, Are you free today?</div>
+            <div class="sent-messages">Yes I am.</div>
+        </div>
+        <div class="messages-text" style="flex: 10; padding-left: 5%; padding-right: 5%;">
+            <input type="text" placeholder="Enter a Message..." class="chat-search" style="border-radius: 20px; padding: 2%;">
+        </div>
+    </div>
+  </div>
+</body>
+</html>
