@@ -10,7 +10,7 @@ The `node_modules` directory is excluded from version control using `.gitignore`
 
 ### 1. Clone the Repository
 
-```bash
+```
 git clone https://github.com/itzbrownboi/CrackTheCourse.git
 cd crack-the-course-app
 ```
@@ -19,7 +19,7 @@ cd crack-the-course-app
 
 Make sure you have **Node.js** installed. Then install MongoDB and Express:
 
-```bash
+```
 npm init -y
 npm install mongodb
 npm install express
@@ -34,7 +34,7 @@ npm install express
 
 To start the server locally:
 
-```bash
+```
 node server.js
 ```
 
