@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="css/signup.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-half">
+      <!-- Left content goes here -->
+       <div >
+        <img class="logo" src="images/logo.jpeg" alt="App logo">
+       </div>
+       <div class="about-us">
+        <p>Convert that good GPA to Money!</p>
+        <p class="sell">CrackTheCourse provides opportunities for University students to help their peers while earning an income.</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="right-half">
+      <!-- Right content goes here -->
+       <div class="right-content">
+            <div >
+                <img class="login-logo" src="images/logo.jpeg" alt="App logo">
+                <p class="welcome">Create a Tutor Account</p>
+                <p class="welcome">Create a Student Account</p>
+                <p class="welcome">Create a Admin Account</p>
+           </div><br><br>
+           <form class="user-info">
+            <label for="name" >Name:</label><br>
+            <input class="name-input" type="name" id="name" name="name" required><br><br>
+
+            <label for="email" >Email Address:</label><br>
+            <input class="email-input" type="email" id="email" name="email" required><br><br>
+          
+            <label for="password">Password:</label><br>
+            <input class="password-input" type="password" id="password" name="password" required><br><br>
+
+            <label for="confirm-password">Confirm Password:</label><br>
+            <input class="confirm-password-input" type="confirm-password" id="confirm-password" name="confirm-password" required><br><br>
+
+            <label for="tutor-courses">Courses:</label><br>
+            <select id="tutor-courses" name="tutor-courses" class="courses">
+                <option value="cpsc251">CPSC 251</option>
+                <option value="seng513">SENG 513</option>
+                <option value="cpsc413">CPSC 413</option>
+                <option value="seng300">SENG 300</option>
+            </select><br><br>
+
+            <label for="weak-courses">Weak Courses:</label><br>
+            <select id="weak-courses" name="weak-courses" class="courses">
+                <option value="cpsc251">CPSC 251</option>
+                <option value="seng513">SENG 513</option>
+                <option value="cpsc413">CPSC 413</option>
+                <option value="seng300">SENG 300</option>
+            </select><br><br>
+
+            <label for="strong-courses">Strong Courses:</label><br>
+            <select id="strong-courses" name="strong-courses" class="courses">
+                <option value="cpsc251">CPSC 251</option>
+                <option value="seng513">SENG 513</option>
+                <option value="cpsc413">CPSC 413</option>
+                <option value="seng300">SENG 300</option>
+            </select><br><br>
+
+            <label for="admin-code">Admin Access Code:</label><br>
+            <input class="admin-code" type="admin-code" id="admin-code" name="admin-code" required><br>
+
+           </form>
+           <button type="submit" class="signup-button">SIGN UP</button>
+           <div class="old-user">
+                <p>Already have an account?</p>  <p>     Log in</p>
+           </div>
+       </div>
+    </div>
+  </div>
+</body>
+</html>
