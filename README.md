@@ -13,6 +13,7 @@ The `node_modules` directory is excluded from version control using `.gitignore`
 ```
 git clone https://github.com/itzbrownboi/CrackTheCourse.git
 cd CrackTheCourse
+cd crack-the-course-app
 ```
 
 ### 2. Install Dependencies
