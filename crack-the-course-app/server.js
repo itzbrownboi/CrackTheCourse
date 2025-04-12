@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // MongoDB URI connection string
-const uri = "mongodb+srv://ebunmak05:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
+const uri = "please include your own URI*";
 let client;
 let db;
 
