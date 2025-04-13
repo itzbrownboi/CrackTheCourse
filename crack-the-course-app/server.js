@@ -6,8 +6,9 @@ const { MongoClient } = require("mongodb");
 const app = express();
 const port = 3000;
 const {profileRoute} = require("./routes/profile");
+const { signupRoute } = require("./routes/signup");
 // MongoDB URI connection string
-const uri = "please include your own URI*";
+const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
 let client;
 let db;
 
@@ -33,10 +34,13 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     client = connectedClient;  // Store  client
     db = client.db("CrackTheCourse");  // Get database
     console.log("Connected to MongoDB");
+
+    app.post("/api/signup", signupRoute(db));
+
     populate_data().catch(console.dir);
   })
   .catch((error) => console.error("Failed to connect to MongoDB:", error));
-
+  
 // populate the database with sample user data
 async function populate_data() {
   const users = db.collection("users");  // Get the 'users' collection
