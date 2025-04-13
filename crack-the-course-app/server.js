@@ -1,11 +1,11 @@
 
-import { profileRoute } from "./routes/profile";
+//import { profileRoute } from "./routes/profile";
 // Importing necessary libraries for Express and MongoDB
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const app = express();
 const port = 3000;
-
+const {profileRoute} = require("./routes/profile");
 // MongoDB URI connection string
 const uri = "please include your own URI*";
 let client;

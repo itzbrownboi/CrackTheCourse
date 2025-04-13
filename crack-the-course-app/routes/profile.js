@@ -1,5 +1,5 @@
 // routes/profile.js
-export function profileRoute(db) {
+function profileRoute(db) {
     return async (req, res) => {
       const userEmail = req.query.email;
       const users = db.collection("users");
@@ -42,4 +42,5 @@ export function profileRoute(db) {
       }
     };
   }
+  module.exports = {profileRoute};
   
