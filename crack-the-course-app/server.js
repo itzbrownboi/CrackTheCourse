@@ -1,3 +1,5 @@
+
+import { profileRoute } from "./routes/profile";
 // Importing necessary libraries for Express and MongoDB
 const express = require("express");
 const { MongoClient } = require("mongodb");
@@ -51,7 +53,8 @@ async function populate_data() {
       role: "student",
       profile: {
         weakCourses: ["CPSC 251", "MATH 367"],
-        strongCourses: ["MATH 211"]
+        strongCourses: ["MATH 211"],
+        teachCourses:[]
       }
     },
     {
@@ -64,7 +67,8 @@ async function populate_data() {
       role: "student",
       profile: {
         weakCourses: ["CPSC 355", "MATH 367"],
-        strongCourses: ["CPSC 413"]
+        strongCourses: ["CPSC 413"],
+        teachCourses: []
       }
     },
   ]);
@@ -101,6 +105,9 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+
+app.get("/api/profile", profileRoute(db))
+/*
 // GET route to fetch user profile based on email
 app.get('/api/profile', async (req, res) => {
   const users = db.collection("users");
@@ -127,7 +134,10 @@ app.get('/api/profile', async (req, res) => {
           lastName: user.lastName,
           school: user.school,
           educationLevel: user.educationLevel,
-          profile: user.profile
+          profile: {
+            weakCourses: user.profile.weakCourses,
+            strongCourses: user.profile.strongCourses
+          } 
       });
   } else if (user.role === 'teacher') { 
       return res.json({
@@ -136,9 +146,12 @@ app.get('/api/profile', async (req, res) => {
           lastName: user.lastName,
           school: user.school,
           educationLevel: user.educationLevel,
-          profile: user.profile
+          profile: {
+            teachCourses : user.profile.teachCourses
+          }
       });
   } else {
       return res.status(400).json({ error: "Invalid role" });
   }
 });
+*/
