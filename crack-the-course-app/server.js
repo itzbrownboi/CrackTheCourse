@@ -76,7 +76,19 @@ async function populate_data() {
         weakCourses: ["CPSC 355", "MATH 367"],
         strongCourses: ["CPSC 413"],
         teachCourses: []
-      }
+      },
+      chats: {
+        chats_recieved: {
+          alice: {},
+          bob :{}
+          },
+        chats_sent: {
+              alice: {},
+              bob:{}
+              }
+      },
+      likes: {}
+      
     },
   ]);
 
