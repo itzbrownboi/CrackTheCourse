@@ -10,6 +10,8 @@ const { signupRoute } = require("./routes/signup");
 const { profileUpdates } = require("./routes/profile_update");
 const {chat_send_recieve} = require("./routes/chat");
 const {chat_get} = require("./routes/chat");
+const {likes_post} = require("./routes/likes");
+const {likes_get} = required("./routes/likes");
 // MongoDB URI connection string
 const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
 let client;
@@ -62,7 +64,18 @@ async function populate_data() {
         weakCourses: ["CPSC 251", "MATH 367"],
         strongCourses: ["MATH 211"],
         teachCourses:[]
-      }
+      },
+      chats: {
+        chats_recieved: {
+          alice: {},
+          bob :{}
+          },
+        chats_sent: {
+              alice: {},
+              bob:{}
+              }
+      },
+      likes: {}
     },
     {
       firstName: "Gwen",
@@ -130,7 +143,10 @@ app.get("/api/profile", profileRoute(db));
 app.post("/api/profile_update", profileUpdates(db));
 
 app.get("/api/chat", chat_get(db));
-app.post("api/chat", chat_send_recieve(db));
+app.post("/api/chat", chat_send_recieve(db));
+
+app.post("/api/likes", likes_post(db));
+app.get("/api/likes", likes_get(db));
 
 
 
