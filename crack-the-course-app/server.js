@@ -7,6 +7,7 @@ const app = express();
 const port = 3000;
 const {profileRoute} = require("./routes/profile");
 const { signupRoute } = require("./routes/signup");
+const { profileUpdates } = require("./routes/profile_update");
 // MongoDB URI connection string
 const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
 let client;
@@ -110,7 +111,9 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-app.get("/api/profile", profileRoute(db))
+app.get("/api/profile", profileRoute(db));
+
+app.post("/api/profile_update", profileUpdates(db));
 /*
 // GET route to fetch user profile based on email
 app.get('/api/profile', async (req, res) => {
