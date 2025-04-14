@@ -63,3 +63,27 @@ function chat_send_recieve(db){
 }
 module.exports = {chat_send_recieve}
 
+function chat_get(db){
+    return (req, res) => {
+        const{email, to } = req.body;
+
+
+        if(!email || !to) {
+            return res.status(400).json({error: "Missing required fields: email, to"});
+            
+        }
+
+        const users = db.collectoin("users");
+
+        if(users.email == email){
+            return res.json({
+                chats_chat_recieve : users.chats.chat_recieve,
+                chats_chat_send: users.chats.chat_send
+            });
+        } else {
+            return res.status(400).json({error: "Invalid role"});
+        }
+    }
+}
+module.exports = {chat_get};
+
