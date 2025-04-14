@@ -8,6 +8,7 @@ const port = 3000;
 const {profileRoute} = require("./routes/profile");
 const { signupRoute } = require("./routes/signup");
 const { profileUpdates } = require("./routes/profile_update");
+const {chat_send_recieve} = require("./routes/chat");
 // MongoDB URI connection string
 const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
 let client;
@@ -110,10 +111,13 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+//Can use these to get it running through your html file scripts
+//app.get("/api/profile", profileRoute(db));
 
-app.get("/api/profile", profileRoute(db));
+//app.post("/api/profile_update", profileUpdates(db));
 
-app.post("/api/profile_update", profileUpdates(db));
+
+
 /*
 // GET route to fetch user profile based on email
 app.get('/api/profile', async (req, res) => {

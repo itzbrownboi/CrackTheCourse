@@ -1,7 +1,7 @@
 // routes/profiel_update.js
 //Needs user email to find user. User cannot change email.
 //Needs a body for update with all variable specified that need to updated
-export function profileUpdates(db){
+function profileUpdates(db){
     return async (req, res) => {
         const userEmail = req.query.email;
         const users = db.collection("users");
@@ -51,4 +51,4 @@ export function profileUpdates(db){
         
     }
 }
-module.exports = {profile_update};
+module.exports = {profileUpdates};
