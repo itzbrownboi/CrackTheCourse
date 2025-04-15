@@ -24,8 +24,10 @@ Make sure you have **Node.js** installed. Then install MongoDB and Express:
 npm init -y
 npm install mongodb
 npm install express
+npm install bcrypt
 ```
-
+ **Note:**  
+bcrypt is used to securely hash passwords before storing them in the database.  
 
 ## Connecting MongoDB
 
@@ -69,3 +71,8 @@ To create a new page or feature:
 You can define endpoints in `server.js` to handle actions like login, signup, etc. 
 
 These endpoints can then be called from your frontend JS using `fetch()`.
+
+## Password hashing
+Passwords are hashed using **bcrypt** before being stored in the database. When a new user signs up, the plaintext password is hashed (using 10 salt rounds by default) and then stored in MongoDB. This approach ensures that, in the event of a data breach, the original passwords remain secure.
+
+

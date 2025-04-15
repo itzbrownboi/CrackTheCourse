@@ -1,8 +1,10 @@
 // routes/signup.js
 
-export function signupRoute(db) {
+const bcrypt = require("bcrypt");
+
+function signupRoute(db) {
     return async (req, res) => {
-      console.log("Received signup request:", req.body);
+      console.log("Received signup request:");
   
       const {
         firstName,
@@ -11,18 +13,22 @@ export function signupRoute(db) {
         password,
         role,
         school = "University of Calgary",
-        educationLevel = "Unknown",
+        educationLevel,
         profile = {}
       } = req.body;
   
       try {
         const users = db.collection("users");
   
-        // Check if user already exists
-        const existingUser = await users.findOne({ email });
+      // Check if user already exists
+      const existingUser = await users.findOne({ email });
         if (existingUser) {
           return res.status(409).json({ message: "User already exists" });
         }
+
+      // Hash the password before saving it
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
   
       // Sanitize profile based on role
       const finalProfile = {
@@ -45,11 +51,16 @@ export function signupRoute(db) {
         firstName,
         lastName,
         email,
-        password,
+        password: hashedPassword,
         role,
         school,
         educationLevel,
-        profile: finalProfile
+        profile: finalProfile,
+        chats: {
+          chats_recieved: {}, // empty object by default
+          chats_sent: {}
+        },
+        likes: {}
       });
 
       return res.status(201).json({ message: "Signup successful" });
@@ -61,4 +72,4 @@ export function signupRoute(db) {
   };
 }
 
-  
+module.exports = { signupRoute };  

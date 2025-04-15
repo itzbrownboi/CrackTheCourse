@@ -24,7 +24,8 @@ function profileRoute(db) {
           profile: {
             weakCourses: user.profile.weakCourses,
             strongCourses: user.profile.strongCourses
-          }
+          },
+          likes: {}
         });
       } else if (user.role === 'teacher') {
         return res.json({
@@ -35,7 +36,8 @@ function profileRoute(db) {
           educationLevel: user.educationLevel,
           profile: {
             teachCourses: user.profile.teachCourses
-          }
+          },
+          likes: {}
         });
       } else {
         return res.status(400).json({ error: "Invalid role" });
