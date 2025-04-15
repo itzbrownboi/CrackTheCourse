@@ -11,7 +11,12 @@ const { profileUpdates } = require("./routes/profile_update");
 const {chat_send_recieve} = require("./routes/chat");
 const {chat_get} = require("./routes/chat");
 const {likes_post} = require("./routes/likes");
-const {likes_get} = required("./routes/likes");
+const {likes_get} = require("./routes/likes");
+const { searchTutorsByCourse, searchChats } = require("./routes/search");
+const bcrypt = require("bcrypt");
+
+
+
 // MongoDB URI connection string
 const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
 let client;
@@ -42,6 +47,10 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
     app.post("/api/signup", signupRoute(db));
 
+
+    app.get("/api/search/tutors", searchTutorsByCourse(db));
+    app.get("/api/search/chats", searchChats(db));
+
     populate_data().catch(console.dir);
   })
   .catch((error) => console.error("Failed to connect to MongoDB:", error));
@@ -67,12 +76,12 @@ async function populate_data() {
       },
       chats: {
         chats_recieved: {
-          alice: {},
-          bob :{}
+          "alice@example.com": {},
+          "bob@example.com" :{}
           },
         chats_sent: {
-              alice: {},
-              bob:{}
+              "alice@example.com": {},
+              "bob@example.com" :{}
               }
       },
       likes: {}
@@ -92,12 +101,12 @@ async function populate_data() {
       },
       chats: {
         chats_recieved: {
-          alice: {},
-          bob :{}
+          "alice@example.com": {},
+          "bob@example.com" :{}
           },
         chats_sent: {
-              alice: {},
-              bob:{}
+              "alice@example.com" : {},
+              "bob@example.com" :{}
               }
       },
       likes: {}
@@ -124,11 +133,17 @@ app.post('/api/login', async (req, res) => {
       return res.status(401).json({ message: "User not found" });
     }
 
-    
-    if (user.password !== password) {
+/*    
+*    if (user.password !== password) {
+*      return res.status(401).json({ message: "Incorrect password" });
+*    }
+*/
+
+    //compare the plaintext password with the stored hash
+  const passwordMatches = await bcrypt.compare(password, user.password);
+    if (!passwordMatches) {
       return res.status(401).json({ message: "Incorrect password" });
     }
-
    
     res.json({ message: "Login successful", user });
   } catch (err) {

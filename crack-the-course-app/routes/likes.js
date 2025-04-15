@@ -41,7 +41,7 @@ function likes_post(db){
     }
     
 }
-module.exports = {like_post};
+// module.exports = {likes_post};
 
 function likes_get(db){
     return async (req, res) => {
@@ -69,4 +69,4 @@ function likes_get(db){
         }
     }
 }
-module.exports = {likes_get}
+module.exports = {likes_get, likes_post}

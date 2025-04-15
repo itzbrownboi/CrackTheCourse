@@ -61,7 +61,7 @@ function chat_send_recieve(db){
         }
     }
 }
-module.exports = {chat_send_recieve}
+//module.exports = {chat_send_recieve}
 
 function chat_get(db){
     return (req, res) => {
@@ -85,5 +85,5 @@ function chat_get(db){
         }
     }
 }
-module.exports = {chat_get};
+module.exports = {chat_get, chat_send_recieve};
 
