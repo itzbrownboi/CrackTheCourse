@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-part" style="flex: 1; background-color: white;">
+        <div >
+            <img class="logo" src="images/logo.jpeg" alt="App logo">
+        </div>
+        <div>
+            <div class="home">
+                <img class="home-logo" src="images/home-black.png" alt="Home logo">
+                <p class="logo-text">Homepage</p>
+            </div>
+            <div class="student" onclick="window.location.href='mytutors.html'">
+                <img class="student-logo" src="images/tutor.jpg"  alt="Tutor logo">
+                <p class="logo-text">My Tutors</p>
+            </div>
+            <div class="chat" onclick="window.location.href='chat.html'" >
+                <img class="chat-logo" src="images/chat.png" alt="Chat logo">
+                <p class="logo-text">Messages</p>
+            </div>
+        </div>
+        <div class="person" onclick="window.location.href='profile.html'">
+            <img class="person-logo" src="images/person.png"  alt="Person logo">
+            <p class="logo-text">My Profile</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="middle-part" style="flex: 7; background-color: white;">
+        <div style="display: flex; height: auto;">
+            <div>
+                <p class="pagetitle">Hello, Stu</p>
+                <p class="pagetitle" style="font-size: small;color: gray;">What do you want to learn?</p>    
+            </div>
+            <img class="profile-pic" style="margin-left: auto;" src="images/profile.png" alt="Student-profile">
+        </div>
+        <input type="text" placeholder="Search..." class="search">
+
+        <div class="current" >
+            <div style="display: flex;">
+                <p style="text-align: left;margin-bottom: 0%;">Tutors</p>
+                <img class="filter" style="margin-left: auto; height: 30px; width: auto; margin-top: 5px;" src="images/filter.png" alt="filter logo">
+                <p style="font-size: small; color: navy;margin-left: 2%; margin-bottom: 0%;" >View All</p>
+            </div>
+        </div>
+        <div style="gap: 10%; display: flex; color: grey; font-size: small; padding: 2%;">
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">All</div>
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">CPSC 413</div>
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">SENG 513</div>
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">MATH 211</div>
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">ECON 203</div>
+            <div class="course-selector" onclick="this.classList.toggle('clicked')">SOCI 311</div>
+        </div>    
+        <div class="user-display">
+            <div class="chat-student">
+                <img class="profile-pic1" src="images/profile.png" alt="Student-profile">
+
+                <div class="student-desc" style="text-align: left; display: flex; gap: 50%;">
+                    <div>
+                        <div style="display: flex; gap: 10%; text-align: left;">
+                            <p style=" color: grey; font-size: small; white-space: nowrap;">Tina Liu</p>
+                            <img class="like" id="likeheart" style="margin-left: auto; height: 2rem; width: auto" src="images/white-heart.png" alt="like logo" onclick="changeImage()" >
+                        </div>
+                        <div style="display: flex; gap: 10%; text-align: left;">
+                            <p style=" color: grey; font-size: small; ">$20/hr</p>
+                            <img class="ratestar" id="ratestar" style="margin-left: auto; height: 2rem; width: auto" src="images/gold-star.png" alt="rate logo" >
+                            <p style=" color: grey; font-size: small; ">4.6</p>
+                        </div>
+                    </div>
+                    <img class="message" id="message" style="margin-left: auto; height: 2rem; width: auto"onclick="window.location.href='chat.html'"" src="images/message.png" alt="message logo" >
+
+                    
+                </div>
+            </div>
+        </div> 
+    </div>   
+  </div>
+  <script>
+    function changeImage() {
+      const img = document.getElementById("likeheart");
+      img.src = img.src.includes("images/white-heart.png") ? "images/red-heart.png" : "images/white-heart.png";
+    }
+    </script>
+</body>
+</html>

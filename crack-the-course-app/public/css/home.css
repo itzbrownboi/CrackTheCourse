@@ -10,7 +10,6 @@ body {
     width: 100vw;
 }
 
-
 .chat-logo, .person-logo, .student-logo, .home-logo{
     width: 70px;
     height: auto;
@@ -21,12 +20,6 @@ body {
     position: absolute;
     left: 5%;
     
-}
-.student{
-    margin-bottom: 20%;
-}
-.chat{
-    margin-bottom: 150%;
 }
 .logo{
     width: 130px;
@@ -44,9 +37,11 @@ body {
     display:flex;
     gap: 5%;
 }
-.chat-search{
-    width: 100%;
-    margin-bottom: 10%;
+.search{
+    width: 70%;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    padding: 1%;
 }
 .chat-student{
     width: 25%;
@@ -55,10 +50,15 @@ body {
     border: 1px solid lightgray;
     padding: 1%;
     margin-bottom: 3%;
-    background-color: rgb(52, 4, 135);
+    background-color: white;
+    display: flex;
 }
 .profile-pic{
-    width: 15%;
+    width: 10%;
+    height: auto;
+}
+.profile-pic1{
+    width: 4rem;
     height: auto;
 }
 .user-course{
@@ -67,7 +67,7 @@ body {
 }
 .student-courses{
     padding: 3%;
-    background-color: rgb(52, 4, 135);;
+    background-color: rgb(52, 4, 135);
     border-radius: 30px;
     color: white;
     text-align: center;
@@ -75,7 +75,21 @@ body {
     height: 5%;
     width: 20%;
 }
+.course-selector{
+    padding: 0.5%;
+    border-radius: 10px;
+}
+.course-selector:hover{
+    border: 2px grey solid;
+}
+.course-selector.clicked {
+    background-color: rgb(52, 4, 135);
+    color: white;
+  }
 
+.like.clicked{
+    src: "images/red-heart.png";
+}  
 .student-desc{
     width:100%;
     font-size: medium;
@@ -110,7 +124,7 @@ body {
 }
 
 .pagetitle{
-    text-align: center;
+    text-align: left;
 }
 .messages{
     padding-left: 5%;
