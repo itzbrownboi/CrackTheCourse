@@ -34,8 +34,26 @@
           
             <label for="password">Password:</label><br>
             <input class="password-input" type="password" id="password" name="password" required>
-            <p class="forgot">Forgot Password?</p> 
+
+            
+            <p class="forgot" onclick="openPopup()">Forgot Password?</p> 
+            <div id="popup" class="popup">
+                <p>Enter your email to reset your password:</p>
+                <input type="email" class="forgot-email" placeholder="you@example.com" />
+                <br>
+                <p>Enter your new password:</p>
+                <input type="password" class="forgot-password" placeholder="" />
+                <br><br>
+                <div style="display: flex; gap: 20rem;">
+                  <button type="submit" class="reset-button">SUBMIT</button> 
+                  <button onclick="closePopup()">Cancel</button>
+                </div>
+                
+              </div>
+              <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
             <button type="submit" class="login-button">LOG IN</button> 
+
            </form>
            
            <div class="new-user">
@@ -46,6 +64,16 @@
     </div>
   </div>
   <script>
+    function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+
     document.getElementById('login-form').addEventListener('submit', async function (e) {
   e.preventDefault(); 
 
@@ -74,6 +102,7 @@
     alert('Error logging in');
     console.error(error);
   }
+  
 });
   </script>
 </body>
