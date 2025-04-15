@@ -1,80 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome</title>
+
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/signup.css" />
+
+  <!-- Choices.js Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 </head>
+
 <body>
   <div class="container">
     <div class="left-half">
-      <!-- Left content goes here -->
-       <div >
-        <img class="logo" src="images/logo.jpeg" alt="App logo">
-       </div>
-       <div class="about-us">
+      <img class="logo" src="images/logo.jpeg" alt="App logo">
+      <div class="about-us">
         <p>Convert that good GPA to Money!</p>
-        <p class="sell">CrackTheCourse provides opportunities for University students to help their peers while earning an income.</p>
-        </div>
+        <p class="sell">CrackTheCourse provides opportunities for University students to help their peers while earning
+          an income.</p>
+      </div>
     </div>
+
     <div class="divider"></div>
+
     <div class="right-half">
-      <!-- Right content goes here -->
-       <div class="right-content">
-            <div >
-                <img class="login-logo" src="images/logo.jpeg" alt="App logo">
-                <p class="welcome">Create a Tutor Account</p>
-                <p class="welcome">Create a Student Account</p>
-                <p class="welcome">Create a Admin Account</p>
-           </div><br><br>
-           <form class="user-info">
-            <label for="name" >Name:</label><br>
-            <input class="name-input" type="name" id="name" name="name" required><br><br>
+      <div class="right-content">
+        <img class="login-logo" src="images/logo.jpeg" alt="App logo">
+        <p id="tutor-create-label" class="welcome">Create a Tutor Account</p>
+        <p id="student-create-label" class="welcome">Create a Student Account</p>
+        <p id="admin-create-label" class="welcome">Create an Admin Account</p>
 
-            <label for="email" >Email Address:</label><br>
-            <input class="email-input" type="email" id="email" name="email" required><br><br>
-          
-            <label for="password">Password:</label><br>
-            <input class="password-input" type="password" id="password" name="password" required><br><br>
+        <form class="user-info">
+          <label for="name">Name:</label>
+          <input class="name-input" type="text" id="name" name="name" required><br><br>
 
-            <label for="confirm-password">Confirm Password:</label><br>
-            <input class="confirm-password-input" type="confirm-password" id="confirm-password" name="confirm-password" required><br><br>
+          <label for="email">Email Address:</label>
+          <input class="email-input" type="email" id="email" name="email" required><br><br>
 
-            <label for="tutor-courses">Courses:</label><br>
-            <select id="tutor-courses" name="tutor-courses" class="courses">
-                <option value="cpsc251">CPSC 251</option>
-                <option value="seng513">SENG 513</option>
-                <option value="cpsc413">CPSC 413</option>
-                <option value="seng300">SENG 300</option>
-            </select><br><br>
+          <label for="password">Password:</label>
+          <input class="password-input" type="password" id="password" name="password" required><br><br>
 
-            <label for="weak-courses">Weak Courses:</label><br>
-            <select id="weak-courses" name="weak-courses" class="courses">
-                <option value="cpsc251">CPSC 251</option>
-                <option value="seng513">SENG 513</option>
-                <option value="cpsc413">CPSC 413</option>
-                <option value="seng300">SENG 300</option>
-            </select><br><br>
+          <label for="confirm-password">Confirm Password:</label>
+          <input class="confirm-password-input" type="password" id="confirm-password" name="confirm-password"
+            required><br><br>
 
-            <label for="strong-courses">Strong Courses:</label><br>
-            <select id="strong-courses" name="strong-courses" class="courses">
-                <option value="cpsc251">CPSC 251</option>
-                <option value="seng513">SENG 513</option>
-                <option value="cpsc413">CPSC 413</option>
-                <option value="seng300">SENG 300</option>
-            </select><br><br>
+          <label id="tutor-courses-label" for="tutor-courses">Courses You Can Teach:</label>
+          <select id="tutor-courses" name="tutor-courses" multiple>
+            <option value="CPSC 251">CPSC 251</option>
+            <option value="SENG 513">SENG 513</option>
+            <option value="CPSC 413">CPSC 413</option>
+            <option value="SENG 300">SENG 300</option>
+          </select><br><br>
 
-            <label for="admin-code">Admin Access Code:</label><br>
-            <input class="admin-code" type="admin-code" id="admin-code" name="admin-code" required><br>
+          <label id="weak-courses-label" for="weak-courses">Weak Courses:</label>
+          <select id="weak-courses" name="weak-courses" multiple>
+            <option value="CPSC 251">CPSC 251</option>
+            <option value="SENG 513">SENG 513</option>
+            <option value="CPSC 413">CPSC 413</option>
+            <option value="SENG 300">SENG 300</option>
+          </select><br><br>
 
-           </form>
-           <button type="submit" class="signup-button">SIGN UP</button>
-           <div class="old-user">
-                <p>Already have an account?</p>  <p>     Log in</p>
-           </div>
-       </div>
+          <label id="strong-courses-label" for="strong-courses">Strong Courses:</label>
+          <select id="strong-courses" name="strong-courses" multiple>
+            <option value="CPSC 251">CPSC 251</option>
+            <option value="SENG 513">SENG 513</option>
+            <option value="CPSC 413">CPSC 413</option>
+            <option value="SENG 300">SENG 300</option>
+          </select><br><br>
+
+          <label id="admin-code-label" for="admin-code">Admin Access Code:</label>
+          <input class="admin-code" type="text" id="admin-code" name="admin-code"><br>
+        </form>
+
+        <button type="submit" class="signup-button">SIGN UP</button>
+
+        <div class="old-user">
+          <p>Already have an account?</p>
+          <a href="login.html">Log in</a>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Choices.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get("role");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize Choices
+      const tutorCoursesChoices = new Choices('#tutor-courses', { removeItemButton: true, placeholder: true });
+      const weakCoursesChoices = new Choices('#weak-courses', { removeItemButton: true, placeholder: true });
+      const strongCoursesChoices = new Choices('#strong-courses', { removeItemButton: true, placeholder: true });
+
+      // Show/hide based on role
+      const toggleDisplay = (id, show) => {
+        document.getElementById(id).style.display = show ? 'block' : 'none';
+      };
+
+      // Helper to toggle both <label>, <select>, and Choices container
+      const toggleSelectDisplay = (selectId, labelId, show) => {
+        const selectEl = document.getElementById(selectId);
+        const labelEl = document.getElementById(labelId);
+        const choicesWrapper = selectEl.closest('.choices');
+
+        if (labelEl) labelEl.style.display = show ? 'block' : 'none';
+        if (choicesWrapper) choicesWrapper.style.display = show ? 'block' : 'none';
+      };
+
+
+      toggleDisplay("tutor-create-label", role === "tutor");
+      toggleDisplay("student-create-label", role === "student");
+      toggleDisplay("admin-create-label", role === "admin");
+
+      // Use new function for Choices dropdowns
+      toggleSelectDisplay("tutor-courses", "tutor-courses-label", role === "tutor");
+      toggleSelectDisplay("weak-courses", "weak-courses-label", role === "student");
+      toggleSelectDisplay("strong-courses", "strong-courses-label", role === "student");
+
+      toggleDisplay("admin-code", role === "admin");
+      toggleDisplay("admin-code-label", role === "admin");
+
+      document.querySelector(".signup-button").addEventListener("click", async () => {
+        const name = document.getElementById("name").value.split(" ");
+        const firstName = name[0] || "";
+        const lastName = name.slice(1).join(" ") || "";
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match.");
+          return;
+        }
+
+        let profile = {
+          strongCourses: [],
+          weakCourses: [],
+          teachCourses: [],
+        };
+
+        if (role === "student") {
+          profile.weakCourses = weakCoursesChoices.getValue(true);
+          profile.strongCourses = strongCoursesChoices.getValue(true);
+        }
+
+        if (role === "tutor") {
+          profile.teachCourses = tutorCoursesChoices.getValue(true);
+        }
+
+        const payload = {
+          firstName,
+          lastName,
+          email,
+          password,
+          role,
+          school: "University of Calgary",
+          educationLevel: "Unknown",
+          profile
+        };
+
+        try {
+          const response = await fetch("/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            localStorage.setItem('userEmail', email);
+            alert("Signup successful!");
+            window.location.href = "profile.html";
+          } else {
+            alert(result.message || "Signup failed.");
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Error during signup.");
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>
