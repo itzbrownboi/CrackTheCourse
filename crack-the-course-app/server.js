@@ -30,7 +30,7 @@ app.use(express.static("public"));
 // Route to serve the login page (HTML file)
 app.get("/", (req, res) => {
   // Send the login.html file located in the 'public' directory
-  res.sendFile(__dirname + "/public/login.html");
+  res.sendFile(__dirname + "/public/welcome.html");
 });
 
 // Start the Express server
@@ -46,12 +46,12 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log("Connected to MongoDB");
 
     app.post("/api/signup", signupRoute(db));
-
+    app.get("/api/profile", profileRoute(db));
 
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
 
-    populate_data().catch(console.dir);
+    // populate_data().catch(console.dir);
   })
   .catch((error) => console.error("Failed to connect to MongoDB:", error));
   
@@ -142,6 +142,8 @@ app.post('/api/login', async (req, res) => {
     //compare the plaintext password with the stored hash
   const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) {
+      console.log(password)
+      console.log(user.password)
       return res.status(401).json({ message: "Incorrect password" });
     }
    
@@ -153,7 +155,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 //Can use these to get it running through your html file scripts
-app.get("/api/profile", profileRoute(db));
+// app.get("/api/profile", profileRoute(db));
 
 app.post("/api/profile_update", profileUpdates(db));
 
@@ -162,6 +164,8 @@ app.post("/api/chat", chat_send_recieve(db));
 
 app.post("/api/likes", likes_post(db));
 app.get("/api/likes", likes_get(db));
+
+// app.post("/api/signup", signupRoute(db))
 
 
 

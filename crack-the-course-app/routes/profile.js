@@ -27,7 +27,7 @@ function profileRoute(db) {
           },
           likes: {}
         });
-      } else if (user.role === 'teacher') {
+      } else if (user.role === 'tutor') {
         return res.json({
           role: user.role,
           firstName: user.firstName,
