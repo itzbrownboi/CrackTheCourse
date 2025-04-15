@@ -39,17 +39,17 @@ function chat_send_recieve(db){
                 {email: email},
                 {
                     $push: {
-                        ["Chats.chat_send.${to}"]: messageEntry
+                        [`chats.chat_send.${to}`]: messageEntry
                     }
                 },
                 {upsert: true}
             );
 
-            await user.updateOne(
+            await users.updateOne(
                 {email: to},
                 {
                     $push: {
-                        ["Chats.chat_recieve.${email}"]: messageEntry
+                        [`chats.chat_recieve.${email}`]: messageEntry
                     }
                 },
                 {upsert: true}
@@ -64,7 +64,7 @@ function chat_send_recieve(db){
 //module.exports = {chat_send_recieve}
 
 function chat_get(db){
-    return (req, res) => {
+    return async (req, res) => {
         const{email, to } = req.body;
 
 
@@ -73,15 +73,22 @@ function chat_get(db){
             
         }
 
-        const users = db.collectoin("users");
+        const users = db.collection("users");
+        try{
+            const user = await users.findOne({email});
 
-        if(users.email == email){
-            return res.json({
-                chats_chat_recieve : users.chats.chat_recieve,
-                chats_chat_send: users.chats.chat_send
+            if(!user){
+                return res.status(404).json({error:"User not found"});
+            
+            
+            }
+
+            return res.status(200).json({
+                chats_recieved: user.chats?.chat_recieved || {},
+                chats_sent: user.chats?.chats_sent || {}
             });
-        } else {
-            return res.status(400).json({error: "Invalid role"});
+        } catch (err){
+            return res.status(500).json({error: "Server error"});
         }
     }
 }

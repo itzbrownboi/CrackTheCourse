@@ -84,7 +84,7 @@ async function populate_data() {
               "bob@example.com" :{}
               }
       },
-      likes: {}
+      likes: []
     },
     {
       firstName: "Gwen",
@@ -109,7 +109,7 @@ async function populate_data() {
               "bob@example.com" :{}
               }
       },
-      likes: {}
+      likes: []
       
     },
   ]);

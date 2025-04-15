@@ -61,7 +61,7 @@ function likes_get(db){
         try{
             if(user.email == userEmail) {
             return res.json({
-                likes
+                likes: user.likes || []
             });
         }
         } catch (err){
