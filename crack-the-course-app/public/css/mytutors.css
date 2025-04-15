@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.chat-logo, .person-logo, .student-logo{
+    width: 70px;
+    height: auto;
+}
+.student{
+    margin-bottom: 20%;
+}
+.chat{
+    margin-bottom: 150%;
+}
+.logo{
+    width: 130px;
+    height: auto;
+    margin-bottom: 90%;
+}
+.divider {
+    width: 2px;
+    background-color: #d3d3d3; /* light grey */
+}
+.logo-text{
+    color: black;
+}
+.user-display{
+    display:flex;
+    gap: 5%;
+}
+.chat-search{
+    width: 100%;
+    margin-bottom: 10%;
+}
+.chat-student{
+    width: 25%;
+    height: 3%;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding: 1%;
+    margin-bottom: 3%;
+    background-color: rgb(52, 4, 135);
+}
+.profile-pic{
+    width: 15%;
+    height: auto;
+}
+.user-course{
+    color: white;
+    margin: 0%;
+}
+.student-courses{
+    padding: 3%;
+    background-color: rgb(52, 4, 135);;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    font-size: xx-small;
+    height: 5%;
+    width: 20%;
+}
+
+.student-desc{
+    width:100%;
+    font-size: medium;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.student-desc p1{
+    font-size: small;
+    color: gray;
+}
+.left-part{
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;       
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+    color:rgb(52, 4, 135);
+}
+
+.middle-part {
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+    font-size: 22px;
+    font-weight: bold;
+    color:black;
+}
+
+.pagetitle{
+    text-align: center;
+}
+.messages{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
