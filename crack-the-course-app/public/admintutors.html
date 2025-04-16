@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="css/admintutors.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-part" style="flex: 1; background-color: white;">
+        <div >
+            <img class="logo" src="images/logo.jpeg" alt="App logo">
+        </div>
+        <div>
+            <div class="student" onclick="window.location.href='mytutors.html'">
+                <img class="student-logo" src="images/tutor-black.png"  alt="Tutor logo">
+                <p class="logo-text">My Tutors</p>
+            </div>
+        </div>
+        <div class="person" onclick="window.location.href='profile.html'">
+            <img class="person-logo" src="images/person.png"  alt="Person logo">
+            <p class="logo-text">My Profile</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="middle-part" style="flex: 7; background-color: white;">
+        <div style="display: flex; height: auto;">
+            <div>
+                <p class="pagetitle">Tutor Review</p>
+                <p class="pagetitle" style="font-size: small;color: gray;">Pending Tutors</p>    
+            </div>
+        </div>
+       <div class="pending-tutors">
+        <div class="pend-tut">
+            <div class="pend-tut1">
+                <div class="tut-desc">
+                    <div class="tut-name">Ray Sunshine</div>
+                    <div class="see-more"  onclick="window.location.href='profile.html'" >See more...</div>
+                </div>
+                <div class="tut-pic">
+                    <img class="profile-pic1" src="images/profile.png" alt="Student-profile">
+                </div>
+            </div>
+            <div class="approve-reject">
+                <button class="approve">Approve</button>
+                <button class="reject"> Reject</button>
+            </div>
+        </div>
+       </div>
+       
+
+        <div class="current" >
+            <div style="display: flex;">
+                <p style="text-align: left;margin-bottom: 1rem; font-size: small;color: gray;">Approved Tutors</p>
+            </div>
+        </div>
+        
+        <div class="user-display">
+            <div class="chat-student">
+                <img class="profile-pic1" src="images/profile.png" alt="Student-profile">
+                <div class="student-desc" style="text-align: left; display: flex; gap: 50%;">
+                    <div>
+                        <div style="display: flex; gap: 10%; text-align: left;">
+                            <p style=" color: grey; font-size: small; white-space: nowrap;">Tina Liu</p>
+                        </div>
+                        <div style="display: flex; gap: 10%; text-align: left;">
+                            <p style=" color: grey; font-size: small; ">$20/hr</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div> 
+    </div>   
+  </div>
+  <script>
+    function changeImage() {
+      const img = document.getElementById("likeheart");
+      img.src = img.src.includes("images/white-heart.png") ? "images/red-heart.png" : "images/white-heart.png";
+    }
+    </script>
+</body>
+</html>

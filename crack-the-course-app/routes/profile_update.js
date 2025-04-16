@@ -33,7 +33,7 @@ function profileUpdates(db){
                 {email : userEmail},
                 {
                     $set: {
-                        irstName : firstName,
+                        firstName : firstName,
                         lastName : lastName,
                         password : password,
                         educationLevel : educationLevel,

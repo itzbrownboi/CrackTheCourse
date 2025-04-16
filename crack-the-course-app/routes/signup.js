@@ -19,7 +19,6 @@ function signupRoute(db) {
   
       try {
         const users = db.collection("users");
-  
       // Check if user already exists
       const existingUser = await users.findOne({ email });
         if (existingUser) {

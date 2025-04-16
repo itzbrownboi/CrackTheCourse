@@ -188,17 +188,15 @@
 
                     profileName.textContent = `${data.firstName} ${data.lastName}`;
                     profileInfo.textContent = data.educationLevel;
-
                     
-                    if (data.role === 'tutor' || data.role === 'teacher') {
-                       
+                    if (data.role === 'tutor') {
                         studentCoursesStrong.style.display = 'none';
                         studentCoursesWeak.style.display = 'none';
                         tutorCourses.style.display = 'block';
                         tutorCourses.innerHTML = `
                             <h2>Courses I Teach</h2>
                             <div class="course-list">
-                                <p>${data.profile.coursesTeaching.join(', ')}</p>
+                                <p>${data.profile.teachCourses.join(', ')}</p>
                             </div>
                             `;
 
@@ -209,7 +207,7 @@
                         tutorCoursesMobile.innerHTML = `
                             <h2>Courses I Teach</h2>
                             <div class="course-list">
-                                <p>${data.profile.coursesTeaching.join(', ')}</p>
+                                <p>${data.profile.teachCourses.join(', ')}</p>
                             </div>
                             `;
                     } else if (data.role === 'student') {
