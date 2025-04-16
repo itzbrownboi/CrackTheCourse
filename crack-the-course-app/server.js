@@ -14,6 +14,10 @@ const {likes_post} = require("./routes/likes");
 const {likes_get} = require("./routes/likes");
 const { searchTutorsByCourse, searchChats } = require("./routes/search");
 const bcrypt = require("bcrypt");
+const { rateTutor, getTutorAverageRating } = require("./routes/ratings");
+const { resetPassword } = require("./routes/reset_password");
+const { updateTutorRate, getTutorRate } = require("./routes/tutor_rates");
+
 
 
 
@@ -45,11 +49,22 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     db = client.db("CrackTheCourse");  // Get database
     console.log("Connected to MongoDB");
 
+    //Can use these to get it running through your html file scripts
     app.post("/api/signup", signupRoute(db));
-
-
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
+    app.get("/api/profile", profileRoute(db));
+    app.post("/api/profile_update", profileUpdates(db));
+    app.get("/api/chat", chat_get(db));
+    app.post("/api/chat", chat_send_recieve(db));
+    app.post("/api/likes", likes_post(db));
+    app.get("/api/likes", likes_get(db));
+    app.post("/api/rate-tutor", rateTutor(db));
+    app.get("/api/rate-tutor", getTutorAverageRating(db));
+    app.post("/api/reset-password", resetPassword(db));
+    app.post("/api/update-tutor-rate", updateTutorRate(db));
+    app.get("/api/get-tutor-rate", getTutorRate(db));
+
 
     populate_data().catch(console.dir);
   })
@@ -112,7 +127,38 @@ async function populate_data() {
       likes: []
       
     },
+    {
+      firstName: "Amanda",
+      lastName: "Smith",
+      email: "amanda@tutor.com",
+      password: "amanda123",
+      school: "University of Calgary",
+      educationLevel: "Graduate",
+      role: "tutor",
+      profile: {
+        teachCourses: ["CPSC 413", "SENG 300"],
+        weakCourses: [],           // tutors may not need this
+        strongCourses: []          // or this
+      },
+      tutorRate: 40,               // tutor's rate per session (e.g., $40)
+      ratings: [                   // individual ratings (from students)
+         { student: "judah@student.com", rating: 4.5 },
+         { student: "gwen@student.com", rating: 4.0 }
+      ],
+      chats: {
+        chats_recieved: {
+          "gwen@student.com": {},
+          "student2@example.com": {}
+        },
+        chats_sent: {
+          "student1@example.com": {},
+          "student2@example.com": {}
+        }
+      },
+      likes: []
+    }
   ]);
+  
 
   console.log("User data populated successfully.");
 }
@@ -140,7 +186,7 @@ app.post('/api/login', async (req, res) => {
 */
 
     //compare the plaintext password with the stored hash
-  const passwordMatches = await bcrypt.compare(password, user.password);
+    const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) {
       return res.status(401).json({ message: "Incorrect password" });
     }
@@ -152,16 +198,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-//Can use these to get it running through your html file scripts
-app.get("/api/profile", profileRoute(db));
-
-app.post("/api/profile_update", profileUpdates(db));
-
-app.get("/api/chat", chat_get(db));
-app.post("/api/chat", chat_send_recieve(db));
-
-app.post("/api/likes", likes_post(db));
-app.get("/api/likes", likes_get(db));
 
 
 
