@@ -201,15 +201,18 @@ app.post('/api/login', async (req, res) => {
 });
 
 //Can use these to get it running through your html file scripts
-app.get("/api/profile", profileRoute(db));
+// app.get("/api/profile", profileRoute(db));
 
-app.post("/api/profile_update", profileUpdates(db));
+//app.post("/api/profile_update", profileUpdates(db));
 
-app.get("/api/chat", chat_get(db));
-app.post("/api/chat", chat_send_recieve(db));
+//app.get("/api/chat", chat_get(db));
+//app.post("/api/chat", chat_send_recieve(db));
 
-app.post("/api/likes", likes_post(db));
-app.get("/api/likes", likes_get(db));
+//app.post("/api/likes", likes_post(db));
+//pp.get("/api/likes", likes_get(db));
+
+
+// app.post("/api/signup", signupRoute(db))
 
 
 
