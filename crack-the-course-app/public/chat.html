@@ -3,91 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome</title>
+  <title>Chat Interface</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/chat.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="left-part" style="flex: 10; background-color: white;">
-        <div >
-            <img class="logo" src="images/logo.jpeg" alt="App logo">
+  <!-- Desktop View -->
+  <div class="desktop-view">
+    <div class="left-part">
+      <div >
+        <img class="logo" src="images/logo.jpeg" alt="App logo">
+    </div>
+    <div>
+        <div class="home">
+            <img class="home-logo" src="images/home-black.png" alt="Home logo">
+            <a href="home.html" class="logo-text">Homepage</a>
         </div>
-        <div class="student">
-            <img class="student-logo" src="student.jpg" alt="Student logo">
-            <p class="logo-text">My Students</p>
+        <div class="student" onclick="window.location.href='mytutors.html'">
+            <img class="student-logo" src="images/tutor.jpg"  alt="Tutor logo">
+            <a href="mytutors.html" class="logo-text">My Tutors</a>
         </div>
-        <div class="chat">
+        <div class="chat" onclick="window.location.href='chat.html'" >
             <img class="chat-logo" src="images/chat.png" alt="Chat logo">
-            <p class="logo-text">Messages</p>
-        </div>
-        <div class="person">
-            <img class="person-logo" src="images/person.png" alt="Person logo">
-            <p class="logo-text">My Profile</p>
+            <a href="chat.html" class="logo-text">Messages</a>
         </div>
     </div>
+    <div class="person" onclick="window.location.href='profile.html'">
+        <img class="person-logo" src="images/person.png"  alt="Person logo">
+        <a href="profile.html" class="logo-text">My Profile</a>
+    </div>
+    </div>
+
     <div class="divider"></div>
-    <div class="middle-part" style="flex: 45; background-color: white;">
+
+    <div class="middle-part">
         <p>Chats</p>
         <input type="text" placeholder="Search by name..." class="chat-search">
-        <div class="chat-student">
-            <img class="profile-pic" src="images/profile.png" alt="Student-profile">
-            <div class="student-desc">
-                <div style="display: flex; gap: 10%;">
-                    <p>Stu Dent</p>
-                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
-                </div>
-                <div style="display: flex;gap: 10%;">
-                    <p1>Hi Stu Dent, are you free...</p1>
-                    <div style="background-color: rgb(52, 4, 135); color: white; font-size: small; border-radius: 50%; text-align: center; width: 8%;height: 15%;"> 2</div>
-                </div> 
-            </div>
-            <div class="student-courses"> CPSC 251</div>
-        </div>
-        <div class="chat-student">
-            <img class="profile-pic" src="images/profile.png" alt="Student-profile">
-            <div class="student-desc">
-                <div style="display: flex; gap: 10%;">
-                    <p>Stu Dent</p>
-                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
-                </div>
-                <div style="display: flex;gap: 10%; color: white; padding: 3%; background-color:  rgb(52, 4, 135); font-size: small; border-radius: 10px; text-align: center;justify-content: center;">
-                   Request
-                 </div> 
-            </div>
-            <div class="student-courses"> CPSC 251</div>
-        </div>
-        <div class="chat-student">
-            <img class="profile-pic" src="images/profile.png" alt="Student-profile">
-            <div class="student-desc">
-                <div style="display: flex; gap: 10%;">
-                    <p>Stu Dent</p>
-                    <p style=" color: grey; font-size: small; text-align: center; ">2 min</p>
-                </div>
-                <div style="display: flex;gap: 10%; color: white; padding: 3%; background-color:  grey
-                ; font-size: small; border-radius: 10px; text-align: center;justify-content: center;">
-                    Request Sent
-                  </div> 
-            </div>
-            <div class="student-courses"> CPSC 251</div>
-        </div>
+        <!-- Add logic for selecting a chat -->
     </div>
+
     <div class="divider"></div>
-    <div class="right-part" style="flex: 75; background-color: white; display:flex; flex-direction: column; ">
+
+    <div class="right-part" style="flex: 75; background-color: white; display:flex; flex-direction: column;">
         <div class="stu-desc" style="flex: 10; padding: 2%; display: flex; gap: 5%; color: black; border-bottom: 2px solid lightgray;">
             <img class="profile-pic" src="images/profile.png" alt="Student-profile">
-            <p>Stu Dent</p>
-            <div class="student-courses" style="font-size: medium; " > CPSC 251</div>
+            <p>Chatting with Bob</p>
+            <div class="student-courses" style="font-size: medium;"> CPSC 251</div>
         </div>
+
         <div class="divider"></div>
-        <div class="messages" style="flex: 80; display:flex; flex-direction: column;"> 
-            <p style="text-align: center; color: black;">Monday</p>
-            <div class="rec-messages">Hi tina, Are you free today?</div>
-            <div class="sent-messages">Yes I am.</div>
+
+        <div class="messages" style="flex: 80; display:flex; flex-direction: column; overflow-y: auto; padding: 10px;"> 
+            <p style="text-align: center; color: black;">Loading chat...</p>
         </div>
+
         <div class="messages-text" style="flex: 10; padding-left: 5%; padding-right: 5%;">
-            <input type="text" placeholder="Enter a Message..." class="chat-search" style="border-radius: 20px; padding: 2%;">
+            <input id="messageInput" type="text" placeholder="Enter a Message..." class="chat-search" style="border-radius: 20px; padding: 2%;">
         </div>
     </div>
   </div>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="home.html" class="mobile-nav-item active">
+        <img src="images/home-black.png" alt="Home" class="nav-icon">
+        <span>Home</span>
+    </a>
+    <a href="mytutors.html" class="mobile-nav-item">
+        <img src="images/tutor.jpg" alt="My Tutors" class="nav-icon">
+        <span>My Tutors</span>
+    </a>
+    <a href="chat.html" class="mobile-nav-item">
+        <img src="images/chat.png" alt="Messages" class="nav-icon">
+        <span>Messages</span>
+    </a>
+    <a href="profile.html" class="mobile-nav-item">
+        <img src="images/person.png" alt="Profile" class="nav-icon">
+        <span>Profile</span>
+    </a>
+  </nav>
+
+  <script>
+    const senderEmail = "dd@cmail.com";    // Replace with logged-in user
+    const receiverEmail = "test@tutor.com";    // Replace with selected user
+
+    const messagesContainer = document.querySelector('.messages');
+    const messageInput = document.getElementById('messageInput');
+
+    // Send message on Enter
+    messageInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        fetch('/api/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            email: senderEmail,
+            chat_body: {
+              to: receiverEmail,
+              message: message
+            }
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Message sent:', data);
+          appendSentMessage(message);
+          messageInput.value = '';
+        })
+        .catch(err => console.error('Send error:', err));
+      }
+    });
+
+    // Fetch chat history
+    function loadChatHistory() {
+      fetch('/api/chat-get', {
+        method: 'POST', // changed to POST instead of GET
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: receiverEmail,
+          to: senderEmail
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data);
+        messagesContainer.innerHTML = '';
+
+        const safeReceiver = receiverEmail.replace(/\./g, "[dot]");
+        const safeSender = senderEmail.replace(/\./g, "[dot]");
+
+        const sent = data.chats_sent || [];
+        const received = data.chats_received || [];
+
+        console.log(data.chats_received);
+        const allMessages = [...sent.map(m => ({...m, type: 'sent'})), ...received.map(m => ({...m, type: 'rec'}))];
+        allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+        allMessages.forEach(m => {
+          if (m.type === 'sent'){
+            appendSentMessage(m.message);
+          }
+          else {
+            appendReceivedMessage(m.message);
+          }
+        });
+      })
+      .catch(err => {
+        console.error('Load error:', err);
+        messagesContainer.innerHTML = '<p style="text-align: center; color: red;">Error loading chat</p>';
+      });
+    }
+
+    function appendSentMessage(message) {
+      const div = document.createElement('div');
+      div.className = 'sent-messages';
+      div.textContent = message;
+      messagesContainer.appendChild(div);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function appendReceivedMessage(message) {
+      const div = document.createElement('div');
+      div.className = 'rec-messages';
+      div.textContent = message;
+      messagesContainer.appendChild(div);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    loadChatHistory();
+    setInterval(loadChatHistory, 5000); // auto-refresh every 5 seconds
+  </script>
 </body>
 </html>

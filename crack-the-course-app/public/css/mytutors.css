@@ -10,33 +10,11 @@ body {
     width: 100vw;
 }
 
+.user-avatar{
+    max-width: 40px;
+    height: 40px;
+}
 
-.chat-logo, .person-logo, .student-logo, .home-logo{
-    width: 70px;
-    height: auto;
-    cursor: pointer;
-}
-.person{
-    bottom: 0;
-    position: absolute;
-    left: 5%;
-    
-}
-.student{
-    margin-bottom: 20%;
-}
-.chat{
-    margin-bottom: 150%;
-}
-.logo{
-    width: 130px;
-    height: auto;
-    margin-bottom: 90%;
-}
-.divider {
-    width: 2px;
-    background-color: #d3d3d3; /* light grey */
-}
 .logo-text{
     color: black;
 }
@@ -89,15 +67,11 @@ body {
     color: gray;
 }
 .left-part{
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;       
-    padding: 2%;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 10px;
-    width: 100%;
-    color:rgb(52, 4, 135);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--white);
 }
 
 .middle-part {

@@ -1,25 +1,44 @@
 // routes/search.js
 
-// Searches for tutors who teach a given course.
+// Searches for tutors who teach a given course or returns all.
 function searchTutorsByCourse(db) {
-    return async (req, res) => {
-      const { course } = req.query;
-      if (!course) {
-        return res.status(400).json({ error: "Course query parameter is required" });
+  return async (req, res) => {
+    const { course } = req.query;
+
+    if (!course) {
+      return res.status(400).json({ error: "Course query parameter is required" });
+    }
+
+    try {
+      const users = db.collection("users");
+
+      let query = { role: "tutor" };
+
+      if (course.toLowerCase() !== "all") {
+        query["profile.teachCourses"] = { $in: [course] };
       }
-      try {
-        const users = db.collection("users");
-        const tutors = await users.find({
-          role: "tutor",
-          "profile.teachCourses": { $in: [course] }
-        }).toArray();
-        return res.json({ tutors });
-      } catch (err) {
-        console.error("Error searching tutors:", err);
-        return res.status(500).json({ error: "Server error during tutor search" });
-      }
-    };
-  }
+
+      const tutors = await users.find(query).toArray();
+
+      const formattedTutors = tutors.map((tutor) => ({
+        firstName: tutor.firstName,
+        lastName: tutor.lastName,
+        school: tutor.school,
+        educationLevel: tutor.educationLevel,
+        profile: {
+          teachCourses: tutor.profile?.teachCourses || []
+        },
+        likes: {}
+      }));
+
+      return res.json({ tutors: formattedTutors });
+    } catch (err) {
+      console.error("Error searching tutors:", err);
+      return res.status(500).json({ error: "Server error during tutor search" });
+    }
+  };
+}
+
 
 // Searches for the chat counterparts of a user (sent and received).  
 function searchChats(db) {
@@ -62,4 +81,31 @@ function searchChats(db) {
   }
 }
 
-module.exports = { searchTutorsByCourse, searchChats };
+function getAllCourses(db) {
+  return (req, res) => {
+    console.log("Fetching courses...");  // Debug log
+    try {
+      const coursesCollection = db.collection("courses");
+      coursesCollection.find().toArray((err, courses) => {
+        if (err) {
+          console.error("Error fetching courses:", err);
+          return res.status(500).json({ error: "Server error while fetching courses" });
+        }
+
+        console.log("Courses fetched:", courses);  // Debug log
+        const formattedCourses = courses.map(course => ({
+          courseName: course.courseName
+        }));
+
+        return res.json({ courses: formattedCourses });
+      });
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      return res.status(500).json({ error: "Unexpected server error" });
+    }
+  };
+}
+
+
+
+module.exports = { searchTutorsByCourse, searchChats, getAllCourses };

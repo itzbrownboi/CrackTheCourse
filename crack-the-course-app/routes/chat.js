@@ -16,81 +16,91 @@ const { Timestamp } = require("mongodb");
 */
 
 
-function chat_send_recieve(db){
+function chat_send_recieve(db) {
     return async (req, res) => {
-        const {email, chat_body} = req.body;
-        const {to, message} = chat_body;
+        const { email, chat_body } = req.body;
 
-        if (!email || !to || !message){
-            return res.status(400).json({error: "Missing required fields: email, to, message"});
+        if (!chat_body || !email) {
+            return res.status(400).json({ error: "Missing chat_body or email" });
+        }
 
+        const { to, message } = chat_body;
+
+        if (!email || !to || !message) {
+            return res.status(400).json({ error: "Missing required fields: email, to, message" });
         }
 
         const users = db.collection("users");
 
         const timestamp = new Date();
-        const messageEntry = {
-            message,
-            timestamp
-        };
+        const messageEntry = { message, timestamp };
 
-        try{
+        // Safely encode emails for dot-safe MongoDB keys
+        const toKey = to.replace(/\./g, "[dot]");
+        const emailKey = email.replace(/\./g, "[dot]");
+
+        try {
             await users.updateOne(
-                {email: email},
+                { email: email },
                 {
                     $push: {
-                        [`chats.chat_send.${to}`]: messageEntry
+                        [`chats.chats_sent.${toKey}`]: messageEntry
                     }
                 },
-                {upsert: true}
+                { upsert: true }
             );
 
             await users.updateOne(
-                {email: to},
+                { email: to },
                 {
                     $push: {
-                        [`chats.chat_recieve.${email}`]: messageEntry
+                        [`chats.chats_received.${emailKey}`]: messageEntry
                     }
                 },
-                {upsert: true}
+                { upsert: true }
             );
 
-            return res.status(200).json({message: "Message sent and received with timestamp"});
-        } catch (err){
-            res.status(500).json({message: "Server error"});
+            return res.status(200).json({ message: "Message sent and received with timestamp" });
+        } catch (err) {
+            console.error("Send error:", err);
+            res.status(500).json({ message: "Server error" });
         }
-    }
+    };
 }
+
 //module.exports = {chat_send_recieve}
 
-function chat_get(db){
+function chat_get(db) {
     return async (req, res) => {
-        const{email, to } = req.body;
+        const { email, to } = req.body;
 
-
-        if(!email || !to) {
-            return res.status(400).json({error: "Missing required fields: email, to"});
-            
+        if (!email || !to) {
+            return res.status(400).json({ error: "Missing required fields: email, to" });
         }
 
         const users = db.collection("users");
-        try{
-            const user = await users.findOne({email});
 
-            if(!user){
-                return res.status(404).json({error:"User not found"});
-            
-            
+        try {
+            const user = await users.findOne({ email });
+            // console.log(user);
+
+            if (!user) {
+                return res.status(404).json({ error: "User not found" });
             }
 
+            const toKey = to.replace(/\./g, "[dot]");
+            const emailKey = email.replace(/\./g, "[dot]");
+
             return res.status(200).json({
-                chats_recieved: user.chats?.chat_recieved || {},
-                chats_sent: user.chats?.chats_sent || {}
+                chats_sent: user.chats?.chats_sent?.[toKey] || [],
+                chats_received: user.chats?.chats_received?.[toKey] || []
             });
-        } catch (err){
-            return res.status(500).json({error: "Server error"});
+        } catch (err) {
+            console.error("Get error:", err);
+            return res.status(500).json({ error: "Server error" });
         }
-    }
+    };
 }
+
 module.exports = {chat_get, chat_send_recieve};
 
