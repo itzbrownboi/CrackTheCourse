@@ -12,7 +12,7 @@ const {chat_send_recieve} = require("./routes/chat");
 const {chat_get} = require("./routes/chat");
 const {likes_post} = require("./routes/likes");
 const {likes_get} = require("./routes/likes");
-const { searchTutorsByCourse, searchChats } = require("./routes/search");
+const { searchTutorsByCourse, searchChats, getAllCourses } = require("./routes/search");
 const bcrypt = require("bcrypt");
 
 
@@ -50,6 +50,10 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
+    app.get("/api/search/courses", getAllCourses(db));
+
+    app.post("/api/chat-get", chat_get(db));
+    app.post("/api/chat", chat_send_recieve(db));
 
     // populate_data().catch(console.dir);
   })
@@ -159,8 +163,8 @@ app.post('/api/login', async (req, res) => {
 
 app.post("/api/profile_update", profileUpdates(db));
 
-app.get("/api/chat", chat_get(db));
-app.post("/api/chat", chat_send_recieve(db));
+// app.get("/api/chat", chat_get(db));
+// app.post("/api/chat", chat_send_recieve(db));
 
 app.post("/api/likes", likes_post(db));
 app.get("/api/likes", likes_get(db));

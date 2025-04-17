@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile</title>
+    <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
@@ -14,34 +16,32 @@
 <body>
     <div class="min-h-screen bg-gray-50">
         <!-- Desktop View -->
-        <div class="hidden-mobile desktop-view">
+        <div class="desktop-view">
             <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="sidebar-content">
-                    <div class="logo">
-                        <img src="images/logo.jpeg" alt="logo" class="logo-icon">
+            <div class="left-part">
+                <div >
+                    <img class="logo" src="images/logo.jpeg" alt="App logo">
+                </div>
+                <div>
+                    <div class="home">
+                        <img class="home-logo" src="images/home-black.png" alt="Home logo">
+                        <a href="home.html" class="logo-text">Homepage</a>
                     </div>
-
-                    <nav class="nav-menu">
-                        <div class="nav-item">
-                            <i class="fa-solid fa-house fa-lg"></i>
-                            <span>Home</span>
-                        </div>
-                        <div class="nav-item">
-                            <i class="fa-solid fa-circle-play fa-lg"></i>
-                            <span>My Tutors</span>
-                        </div>
-                        <div class="nav-item">
-                            <i class="fa-regular fa-message fa-lg"></i>
-                            <span>Messages</span>
-                        </div>
-                        <div class="nav-item active">
-                            <i class="fa-regular fa-user fa-lg"></i>
-                            <span>My Profile</span>
-                        </div>
-                    </nav>
+                    <div class="student" onclick="window.location.href='mytutors.html'">
+                        <img class="student-logo" src="images/tutor.jpg"  alt="Tutor logo">
+                        <a href="mytutors.html" class="logo-text">My Tutors</a>
+                    </div>
+                    <div class="chat" onclick="window.location.href='chat.html'" >
+                        <img class="chat-logo" src="images/chat.png" alt="Chat logo">
+                        <a href="chat.html" class="logo-text">Messages</a>
+                    </div>
+                </div>
+                <div class="person" onclick="window.location.href='profile.html'">
+                    <img class="person-logo" src="images/person.png"  alt="Person logo">
+                    <a href="profile.html" class="logo-text">My Profile</a>
                 </div>
             </div>
+            <div class="divider"></div>
 
             <!-- Main Content -->
             <div class="main-content">
@@ -81,7 +81,7 @@
                     </div>
 
                     <!-- Activity Section -->
-                    <div class="activity-section">
+                    <!-- <div class="activity-section">
                         <h2>Activity</h2>
                         <div class="activity-list">
                             <div class="activity-item">
@@ -93,7 +93,7 @@
                                 <span>Updated Courses</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
                 </div>
 
                 <!-- Activity Section -->
-                <div class="activity-section">
+                <!-- <div class="activity-section">
                     <h2>Activity</h2>
                     <div class="activity-list">
                         <div class="activity-item">
@@ -148,15 +148,27 @@
                             <span>Tutoring with Tina</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Mobile Navigation -->
             <div class="mobile-nav">
-                <i class="fa-solid fa-house"></i>
-                <i class="fa-solid fa-circle-play"></i>
-                <i class="fa-regular fa-message"></i>
-                <i class="fa-regular fa-user"></i>
+                <a href="home.html" class="mobile-nav-item active">
+                    <img src="images/home-black.png" alt="Home" class="nav-icon">
+                    <span>Home</span>
+                </a>
+                <a href="mytutors.html" class="mobile-nav-item">
+                    <img src="images/tutor.jpg" alt="My Tutors" class="nav-icon">
+                    <span>My Tutors</span>
+                </a>
+                <a href="chat.html" class="mobile-nav-item">
+                    <img src="images/chat.png" alt="Messages" class="nav-icon">
+                    <span>Messages</span>
+                </a>
+                <a href="profile.html" class="mobile-nav-item">
+                    <img src="images/person.png" alt="Profile" class="nav-icon">
+                    <span>Profile</span>
+                </a>
             </div>
         </div>
     </div>
