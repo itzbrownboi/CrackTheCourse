@@ -7,7 +7,6 @@ function profileRoute(db) {
       if (!userEmail) {
         return res.status(400).json({ error: "Email is required to fetch profile" });
       }
-  
       const user = await users.findOne({ email: userEmail });
   
       if (!user) {

@@ -24,6 +24,7 @@ function searchTutorsByCourse(db) {
         firstName: tutor.firstName,
         lastName: tutor.lastName,
         school: tutor.school,
+        email: tutor.email,
         educationLevel: tutor.educationLevel,
         profile: {
           teachCourses: tutor.profile?.teachCourses || []
@@ -105,6 +106,7 @@ function getAllCourses(db) {
     }
   };
 }
+
 
 
 

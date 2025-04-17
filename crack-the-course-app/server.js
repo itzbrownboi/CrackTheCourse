@@ -12,9 +12,12 @@ const {chat_send_recieve} = require("./routes/chat");
 const {chat_get} = require("./routes/chat");
 const {likes_post} = require("./routes/likes");
 const {likes_get} = require("./routes/likes");
+const {sendTutorRequest} = require("./routes/tutors");
+const {getAcceptedTutors} = require("./routes/tutors");
+const {getPendingAndAcceptedStudents} = require("./routes/student");
 const { searchTutorsByCourse, searchChats, getAllCourses } = require("./routes/search");
+const { acceptStudentRequest } = require("./routes/student");
 const bcrypt = require("bcrypt");
-
 
 
 // MongoDB URI connection string
@@ -51,9 +54,13 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
     app.get("/api/search/courses", getAllCourses(db));
+    app.post('/api/get-tutors-for-chat', getAcceptedTutors(db));
 
     app.post("/api/chat-get", chat_get(db));
     app.post("/api/chat", chat_send_recieve(db));
+    app.post("/api/get-students-for-chat", getPendingAndAcceptedStudents(db))
+    app.post("/api/accept-student-request", acceptStudentRequest(db));
+    app.post("/api/sendRequest", sendTutorRequest(db));
 
     // populate_data().catch(console.dir);
   })
