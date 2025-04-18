@@ -1,0 +1,50 @@
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .desktop-view {
+        flex-direction: column;
+        padding-bottom: 90px; /* Increased padding for mobile navigation */
+    }
+
+    .left-part {
+        display: none;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .middle-part {
+        padding: 1rem;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .course-filters {
+        margin: -1rem;
+        padding: 1rem;
+        background: var(--white);
+    }
+
+    .tutors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-bar {
+        padding: 1rem;
+    }
+
+    .user-welcome h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Show mobile navigation */
+    .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--white);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+}

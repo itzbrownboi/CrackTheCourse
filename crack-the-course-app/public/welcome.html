@@ -28,32 +28,33 @@
                 <div class="image-box">
                   <img class="pic" src="images/tutor.jpg" alt="Tutor image">
                 </div>
-                <button class="sign-up">Sign Up as a Tutor</button>
+                <button class="sign-up" onclick="location.href='signup.html?role=tutor'">Sign Up as a Tutor</button>
               </div>
     
               <div class="student">
                 <div class="image-box">
                   <img class="pic" src="images/student.jpg" alt="Student image">
                 </div>
-                <button class="sign-up">Sign Up as a Student</button>
+                <button class="sign-up" onclick="location.href='signup.html?role=student'">Sign Up as a Student</button>
               </div>
     
               <div class="admin">
                 <div class="image-box">
                   <img class="pic" src="images/admin.jpg" alt="Admin image">
                 </div>
-                <button class="sign-up">Sign Up as an Admin</button>
+                <button class="sign-up" onclick="location.href='signup.html?role=admin'">Sign Up as an Admin</button>
               </div>
             </div>
     
-           <div class="return-user">
-                <p>Already have an account?</p>
-                <div class="login-box">
-                    <p>Login in as a Tutor | </p>
-                    <p>Login in as a Student | </p>
-                    <p>Login in as a Admin</p>
-                </div>
-           </div>
+            <div class="return-user">
+              <p>Already have an account?</p>
+              <div class="login-box">
+                <a href="login.html?role=tutor">Login as a Tutor</a> |
+                <a href="login.html?role=student">Login as a Student</a> |
+                <a href="login.html?role=admin">Login as an Admin</a>
+              </div>
+            </div>
+            
        </div>
     </div>
   </div>

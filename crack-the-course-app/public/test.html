@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Signup API</title>
+</head>
+<body>
+  <h2>Test Signup (Backend Only)</h2>
+  <button id="signupBtn">Send Test Signup Request</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      const payload = {
+        firstName: "Test",
+        lastName: "User",
+        email: "test" + Math.floor(Math.random() * 10000) + "@example.com", // unique
+        password: "test123",
+        role: "student",
+        school: "University of Calgary",
+        educationLevel: "1st Year",
+        profile: {
+          weakCourses: ["CPSC 251"],
+          strongCourses: ["MATH 211"]
+        }
+      };
+
+      document.getElementById("output").textContent = "Sending:\n" + JSON.stringify(payload, null, 2);
+
+      try {
+        const response = await fetch("/api/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const text = await response.text();
+
+        document.getElementById("output").textContent += "\n\nResponse:\n" + text;
+
+      } catch (err) {
+        document.getElementById("output").textContent += "\n\nError:\n" + err;
+      }
+    });
+  </script>
+</body>
+</html>
