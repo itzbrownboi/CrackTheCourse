@@ -60,7 +60,6 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     app.post('/api/get-tutors-for-chat', getAcceptedTutors(db));
 
     app.post("/api/chat-get", chat_get(db));
-    app.post("/api/chat", chat_send_recieve(db));
     app.post("/api/get-students-for-chat", getPendingAndAcceptedStudents(db))
     app.post("/api/accept-student-request", acceptStudentRequest(db));
     app.post("/api/sendRequest", sendTutorRequest(db));
