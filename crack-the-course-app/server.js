@@ -12,12 +12,15 @@ const {chat_send_recieve} = require("./routes/chat");
 const {chat_get} = require("./routes/chat");
 const {likes_post} = require("./routes/likes");
 const {likes_get} = require("./routes/likes");
-const { searchTutorsByCourse, searchChats } = require("./routes/search");
+const {sendTutorRequest} = require("./routes/tutors");
+const {getAcceptedTutors} = require("./routes/tutors");
+const {getPendingAndAcceptedStudents} = require("./routes/student");
+const { searchTutorsByCourse, searchChats, getAllCourses } = require("./routes/search");
+const { acceptStudentRequest } = require("./routes/student");
 const bcrypt = require("bcrypt");
 const { rateTutor, getTutorAverageRating } = require("./routes/ratings");
 const { resetPassword } = require("./routes/reset_password");
 const { updateTutorRate, getTutorRate } = require("./routes/tutor_rates");
-
 
 
 
@@ -53,6 +56,14 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     app.post("/api/signup", signupRoute(db));
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
+    app.get("/api/search/courses", getAllCourses(db));
+    app.post('/api/get-tutors-for-chat', getAcceptedTutors(db));
+
+    app.post("/api/chat-get", chat_get(db));
+    app.post("/api/chat", chat_send_recieve(db));
+    app.post("/api/get-students-for-chat", getPendingAndAcceptedStudents(db))
+    app.post("/api/accept-student-request", acceptStudentRequest(db));
+    app.post("/api/sendRequest", sendTutorRequest(db));
     app.get("/api/profile", profileRoute(db));
     app.post("/api/profile_update", profileUpdates(db));
     app.get("/api/chat", chat_get(db));
@@ -208,8 +219,8 @@ app.post('/api/login', async (req, res) => {
 //app.get("/api/chat", chat_get(db));
 //app.post("/api/chat", chat_send_recieve(db));
 
-//app.post("/api/likes", likes_post(db));
-//pp.get("/api/likes", likes_get(db));
+//// app.post("/api/likes", likes_post(db));
+// //pp.get("/api/likes", likes_get(db));
 
 
 // app.post("/api/signup", signupRoute(db))
