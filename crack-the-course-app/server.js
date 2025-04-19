@@ -123,6 +123,26 @@ async function populate_data() {
       likes: []
       
     },
+      {
+    firstName: "Taylor",
+    lastName: "Teach",
+    email: "taylor@tutor.com",
+    password: await bcrypt.hash("taylor123", 10),
+    school: "University of Calgary",
+    educationLevel: "Graduate - MSc",
+    role: "tutor",
+    profile: {
+      weakCourses: [],
+      strongCourses: [],
+      teachCourses: ["CPSC 251", "SENG 300"]
+    },
+    chats: {
+      chats_recieved: {},
+      chats_sent: {}
+    },
+    likes: []
+  },
+
   ]);
 
   console.log("User data populated successfully.");
