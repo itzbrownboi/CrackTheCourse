@@ -198,6 +198,7 @@
                     }
                     
                     window.currentProfileData = data;
+                    const role = data.role;
 
                     // Update the profile information based on the returned data
                     const profileName = document.getElementById('profile-name');
@@ -280,26 +281,43 @@
         <span class="close-button">&times;</span>
         <h2>Edit Profile</h2>
         <form id="editProfileForm">
-            <label for="edit-firstname">First Name:</label>
-            <input type="text" id="edit-firstname" placeholder="First Name" />
+            <div class="form-group">
+              <label for="edit-firstname">First Name:</label>
+              <input type="text" id="edit-firstname" placeholder="First Name" />
+            </div>
           
-            <label for="edit-lastname">Last Name:</label>
-            <input type="text" id="edit-lastname" placeholder="Last Name" />
+            <div class="form-group">
+              <label for="edit-lastname">Last Name:</label>
+              <input type="text" id="edit-lastname" placeholder="Last Name" />
+            </div>
           
-            <label for="edit-education">Education Level:</label>
-            <input type="text" id="edit-education" placeholder="e.g. Undergraduate – 2nd Year" />
+            <div class="form-group">
+              <label for="edit-education">Education Level:</label>
+              <input type="text" id="edit-education" placeholder="e.g. Undergraduate – 2nd Year" />
+            </div>
           
-            <label for="edit-strong">Strong Courses (seperate with commas):</label>
-            <input type="text" id="edit-strong" placeholder="e.g. CPSC 233, MATH 211" />
+            <div class="form-group" id="group-strong">
+              <label for="edit-strong">Strong Courses (separate with commas):</label>
+              <input type="text" id="edit-strong" placeholder="e.g. CPSC 233, MATH 211" />
+            </div>
           
-            <label for="edit-weak">Weak Courses (seperate with commas):</label>
-            <input type="text" id="edit-weak" placeholder="e.g. CPSC 355, CPSC 35" />
-
-            <label for="edit-password">Password (leave blank to keep current):</label>
-            <input type="password" id="edit-password" placeholder="••••••••" autocomplete="new-password" />
+            <div class="form-group" id="group-weak">
+              <label for="edit-weak">Weak Courses (separate with commas):</label>
+              <input type="text" id="edit-weak" placeholder="e.g. CPSC 355, MATH 211" />
+            </div>
+          
+            <div class="form-group" id="group-teach">
+              <label for="edit-teach">Courses You Teach (separate with commas):</label>
+              <input type="text" id="edit-teach" placeholder="e.g. CPSC 233, MATH 211" />
+            </div>
+          
+            <div class="form-group">
+              <label for="edit-password">Password (leave blank to keep current):</label>
+              <input type="password" id="edit-password" placeholder="••••••••" autocomplete="new-password" />
+            </div>
           
             <button type="submit" class="save-button">Save</button>
-          </form>          
+          </form>                    
         </div>
     </div>
 
@@ -309,23 +327,37 @@
         const openBtns = document.querySelectorAll(".open-edit-modal");
     
         openBtns.forEach(btn => {
-        btn.onclick = () => {
-            modal.classList.remove("hidden");
+            btn.onclick = () => {
+                modal.classList.remove("hidden");
 
-            const data = window.currentProfileData;
-            const [firstName, lastName] = data.firstName && data.lastName
-            ? [data.firstName, data.lastName]
-            : (document.getElementById('profile-name').textContent.split(" "));
+                const data = window.currentProfileData;
+                const role = data.role;
 
-            document.getElementById("edit-firstname").value = firstName || "";
-            document.getElementById("edit-lastname").value = lastName || "";
-            document.getElementById("edit-education").value = data.educationLevel || "";
+                const [firstName, lastName] = data.firstName && data.lastName
+                ? [data.firstName, data.lastName]
+                : (document.getElementById('profile-name').textContent.split(" "));
 
-            document.getElementById("edit-strong").value = data.profile?.strongCourses?.join(", ") || "";
-            document.getElementById("edit-weak").value = data.profile?.weakCourses?.join(", ") || "";
-        };
-        });
-    
+                document.getElementById("edit-firstname").value = firstName || "";
+                document.getElementById("edit-lastname").value = lastName || "";
+                document.getElementById("edit-education").value = data.educationLevel || "";
+
+                // Hide all groups first
+                document.getElementById("group-strong").style.display = "none";
+                document.getElementById("group-weak").style.display = "none";
+                document.getElementById("group-teach").style.display = "none";
+
+                if (role === "student") {
+                document.getElementById("group-strong").style.display = "block";
+                document.getElementById("group-weak").style.display = "block";
+                document.getElementById("edit-strong").value = data.profile?.strongCourses?.join(", ") || "";
+                document.getElementById("edit-weak").value = data.profile?.weakCourses?.join(", ") || "";
+                } else if (role === "tutor") {
+                document.getElementById("group-teach").style.display = "block";
+                document.getElementById("edit-teach").value = data.profile?.teachCourses?.join(", ") || "";
+                }
+            };
+            });
+
         closeBtn.onclick = () => {
         modal.classList.add("hidden");
         };
@@ -336,15 +368,21 @@
     
         const passwordInput = document.getElementById("edit-password").value.trim();
 
+        let profile = {};
+
+        if (window.currentProfileData.role === "student") {
+        profile.strongCourses = document.getElementById("edit-strong").value.split(",").map(c => c.trim());
+        profile.weakCourses = document.getElementById("edit-weak").value.split(",").map(c => c.trim());
+        } else if (window.currentProfileData.role === "tutor") {
+        profile.teachCourses = document.getElementById("edit-teach").value.split(",").map(c => c.trim());
+        }
+
         const payload = {
             firstName: document.getElementById("edit-firstname").value,
             lastName: document.getElementById("edit-lastname").value,
             educationLevel: document.getElementById("edit-education").value,
-            role: "student",  // Change dynamically if needed
-            profile: {
-            strongCourses: document.getElementById("edit-strong").value.split(",").map(c => c.trim()),
-            weakCourses: document.getElementById("edit-weak").value.split(",").map(c => c.trim())
-            }
+            role: window.currentProfileData.role,
+            profile
         };
 
         if (passwordInput !== "") {

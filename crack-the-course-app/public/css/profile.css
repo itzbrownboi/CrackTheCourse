@@ -167,6 +167,10 @@
     transform: scale(1.02);
   }  
 
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
 /* Mobile View */
 .mobile-view, .mobile-menu {
     display: none;
