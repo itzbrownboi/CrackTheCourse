@@ -1,6 +1,9 @@
 // routes/profiel_update.js
 //Needs user email to find user. User cannot change email.
 //Needs a body for update with all variable specified that need to updated
+
+const bcrypt = require("bcrypt");
+
 function profileUpdates(db){
     return async (req, res) => {
         const userEmail = req.query.email;
@@ -27,28 +30,33 @@ function profileUpdates(db){
         }
 
         
-            
         try {
+            const updateFields = {
+              firstName,
+              lastName,
+              educationLevel,
+              role,
+              profile
+            };
+                    
+            if (password && password.trim() !== "") {
+              const hashedPassword = await bcrypt.hash(password, 10);
+              updateFields.password = hashedPassword;
+            }
+          
             const result = await users.updateOne(
-                {email : userEmail},
-                {
-                    $set: {
-                        firstName : firstName,
-                        lastName : lastName,
-                        password : password,
-                        educationLevel : educationLevel,
-                        role : role,
-                        profile : profile
-                    }
-                }
+              { email: userEmail },
+              { $set: updateFields }
             );
-            return res.status(200).json({message: "User profile updated successfully"})
-        } catch (err) {
-            res.status(500).json({message: "Server error"})
-        }
+                    
+            return res.status(200).json({ message: "User profile updated successfully" });
 
-            
+          } catch (err) {
+            res.status(500).json({ message: "Server error" });
+          }          
+
+        };
         
     }
-}
+
 module.exports = {profileUpdates};
