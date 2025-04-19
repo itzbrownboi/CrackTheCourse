@@ -1,27 +1,36 @@
-const userEmail = localStorage.getItem("userEmail");
+// const userEmail = localStorage.getItem("userEmail");
 
-// Fetch profile data based on email
-if (userEmail) {
-  fetch(`/api/profile?email=${userEmail}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        console.error(data.error);
-        return;
-      }
+// // Fetch profile data based on email
+// if (userEmail) {
+//   fetch(`/api/profile?email=${userEmail}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.error) {
+//         console.error(data.error);
+//         return;
+//       }
 
-      // Update the profile information based on the returned data
-      const profileName = document.getElementById("profile-name");
-      if (data.role === "student") {
-        profileName.textContent = `Hello, ${data.firstName}`;
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching profile data:", error);
-    });
-} else {
-  console.error("User email not found in localStorage.");
-}
+//       // Update the profile information based on the returned data
+//       const profileName = document.getElementById("profile-name");
+//       if (data.role === "student") {
+//         profileName.textContent = `Hello, ${data.firstName}`;
+//       } else if (data.role === "tutor") {
+//         profileName.textContent = `Hello, ${data.firstName}`;
+      
+//         const navHome = document.getElementById("nav-home");
+//         const mobileNavHome = document.getElementById("mobile-nav-home");
+      
+//         if (navHome) navHome.style.display = "none";
+//         if (mobileNavHome) mobileNavHome.style.display = "none";
+//       }
+      
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching profile data:", error);
+//     });
+// } else {
+//   console.error("User email not found in localStorage.");
+// }
 
 // Function to fetch tutors from the backend
 async function fetchTutors(course = "all", searchTerm = "") {
