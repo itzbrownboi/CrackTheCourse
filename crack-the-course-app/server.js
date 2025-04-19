@@ -137,36 +137,26 @@ async function populate_data() {
       likes: []
       
     },
-    {
-      firstName: "Amanda",
-      lastName: "Smith",
-      email: "amanda@tutor.com",
-      password: "amanda123",
-      school: "University of Calgary",
-      educationLevel: "Graduate",
-      role: "tutor",
-      profile: {
-        teachCourses: ["CPSC 413", "SENG 300"],
-        weakCourses: [],           // tutors may not need this
-        strongCourses: []          // or this
-      },
-      tutorRate: 40,               // tutor's rate per session (e.g., $40)
-      ratings: [                   // individual ratings (from students)
-         { student: "judah@student.com", rating: 4.5 },
-         { student: "gwen@student.com", rating: 4.0 }
-      ],
-      chats: {
-        chats_recieved: {
-          "gwen@student.com": {},
-          "student2@example.com": {}
-        },
-        chats_sent: {
-          "student1@example.com": {},
-          "student2@example.com": {}
-        }
-      },
-      likes: []
-    }
+      {
+    firstName: "Taylor",
+    lastName: "Teach",
+    email: "taylor@tutor.com",
+    password: await bcrypt.hash("taylor123", 10),
+    school: "University of Calgary",
+    educationLevel: "Graduate - MSc",
+    role: "tutor",
+    profile: {
+      weakCourses: [],
+      strongCourses: [],
+      teachCourses: ["CPSC 251", "SENG 300"]
+    },
+    chats: {
+      chats_recieved: {},
+      chats_sent: {}
+    },
+    likes: []
+  },
+
   ]);
   
 

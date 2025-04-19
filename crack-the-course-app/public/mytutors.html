@@ -16,7 +16,7 @@
         <img class="logo" src="images/logo.jpeg" alt="App logo">
       </div>
       <div>
-        <div class="home" onclick="window.location.href='home.html'">
+        <div class="home" onclick="window.location.href='home.html'" id="nav-home">
           <img class="home-logo" src="images/home-black.png" alt="Home logo">
           <p class="logo-text">Homepage</p>
         </div>
@@ -52,11 +52,10 @@
 
       <!-- Page Content -->
       <p class="pagetitle">My Tutors</p>
-      <p class="pagetitle">My Students</p>
+      <!-- <p class="pagetitle">My Students</p> -->
 
       <div class="current">
         <p style="text-align: left;">Current Tutors</p>
-        <p style="text-align: left;">Current Students</p>
         <div class="user-display">
           <!-- Sample user -->
           <div class="chat-student">
@@ -72,7 +71,7 @@
         </div> 
       </div>
 
-      <div class="past">
+      <!-- <div class="past">
         <p style="text-align: left;">Past Tutors</p>
         <p style="text-align: left;">Past Students</p>
         <div class="user-display">
@@ -85,15 +84,14 @@
               <img class="profile-pic" src="images/profile.png" alt="Student-profile">
             </div>
           </div>
-          <!-- Add more as needed... -->
         </div> 
-      </div>
+      </div> -->
     </div>
   </div>
 
   <!-- Mobile Navigation -->
   <nav class="mobile-nav">
-    <a href="home.html" class="mobile-nav-item">
+    <a href="home.html" class="mobile-nav-item" id="mobile-nav-home">
       <img src="images/home.png" alt="Home" class="nav-icon">
       <span>Home</span>
     </a>
@@ -110,5 +108,8 @@
       <span>Profile</span>
     </a>
   </nav>
+
+  <script src="js/rolecheck.js"></script>
+  
 </body>
 </html>
