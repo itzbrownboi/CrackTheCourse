@@ -86,3 +86,48 @@
     padding-right: 5%;
 }
 
+@media (max-width: 768px) {
+    .desktop-view {
+        display: block;
+        padding-bottom: 80px;
+        overflow-x: hidden;
+    }
+
+    .left-part {
+        display: none;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .middle-part {
+        max-width: 100%;
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .top-bar {
+        margin-bottom: 1.5rem;
+    }
+
+    .user-welcome h1 {
+        font-size: 1.5rem;
+    }
+
+    .course-filters {
+        margin: 0;
+        padding: 0 1rem 1rem;
+        max-width: 100%;
+    }
+
+    .tutors-grid {
+        grid-template-columns: 1fr;
+    }
+}
