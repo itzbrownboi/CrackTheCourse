@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
@@ -19,25 +19,25 @@
         <div class="desktop-view">
             <!-- Sidebar -->
             <div class="left-part">
-                <div >
+                <div>
                     <img class="logo" src="images/logo.jpeg" alt="App logo">
                 </div>
                 <div>
-                    <div class="home">
+                    <div class="home" id="nav-home">
                         <img class="home-logo" src="images/home-black.png" alt="Home logo">
                         <a href="home.html" class="logo-text">Homepage</a>
                     </div>
                     <div class="student" onclick="window.location.href='mytutors.html'">
-                        <img class="student-logo" src="images/tutor.jpg"  alt="Tutor logo">
+                        <img class="student-logo" src="images/tutor.jpg" alt="Tutor logo">
                         <a href="mytutors.html" class="logo-text">My Tutors</a>
                     </div>
-                    <div class="chat" onclick="window.location.href='chat.html'" >
+                    <div class="chat" onclick="window.location.href='chat.html'">
                         <img class="chat-logo" src="images/chat.png" alt="Chat logo">
                         <a href="chat.html" class="logo-text">Messages</a>
                     </div>
                 </div>
                 <div class="person" onclick="window.location.href='profile.html'">
-                    <img class="person-logo" src="images/person.png"  alt="Person logo">
+                    <img class="person-logo" src="images/person.png" alt="Person logo">
                     <a href="profile.html" class="logo-text">My Profile</a>
                 </div>
             </div>
@@ -104,12 +104,12 @@
         </div>
 
         <!-- Mobile View -->
-        <div class="mobile-view">
+        <div class="mobile-view" id="mobile-nav-home">
             <div class="mobile-content">
                 <div class="edit-button">
                     <i data-lucide="edit-2"></i>
                 </div>
-                
+
                 <!-- Edit Button -->
                 <div class="edit-profile-button">
                     <img src="images/edit-profile.png" alt="Edit Profile" class="open-edit-modal" />
@@ -196,7 +196,7 @@
                         console.error(data.error);
                         return;
                     }
-                    
+
                     window.currentProfileData = data;
                     const role = data.role;
 
@@ -213,7 +213,7 @@
 
                     profileName.textContent = `${data.firstName} ${data.lastName}`;
                     profileInfo.textContent = data.educationLevel;
-                    
+
                     if (data.role === 'tutor') {
                         studentCoursesStrong.style.display = 'none';
                         studentCoursesWeak.style.display = 'none';
@@ -235,6 +235,10 @@
                                 <p>${data.profile.teachCourses.join(', ')}</p>
                             </div>
                             `;
+                        const navHome = document.getElementById("nav-home");
+                        const mobileNavHome = document.getElementById("mobile-nav-home");
+                        if (navHome) navHome.style.display = "none";
+                        if (mobileNavHome) mobileNavHome.style.display = "none";
                     } else if (data.role === 'student') {
                         studentCoursesStrong.style.display = 'block';
                         studentCoursesStrong.innerHTML = `
@@ -274,50 +278,50 @@
             console.error("User email not found in localStorage.");
         }
     </script>
-  
+
     <!-- Edit Profile Modal -->
     <div id="editProfileModal" class="modal hidden">
         <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Edit Profile</h2>
-        <form id="editProfileForm">
-            <div class="form-group">
-              <label for="edit-firstname">First Name:</label>
-              <input type="text" id="edit-firstname" placeholder="First Name" />
-            </div>
-          
-            <div class="form-group">
-              <label for="edit-lastname">Last Name:</label>
-              <input type="text" id="edit-lastname" placeholder="Last Name" />
-            </div>
-          
-            <div class="form-group">
-              <label for="edit-education">Education Level:</label>
-              <input type="text" id="edit-education" placeholder="e.g. Undergraduate – 2nd Year" />
-            </div>
-          
-            <div class="form-group" id="group-strong">
-              <label for="edit-strong">Strong Courses (separate with commas):</label>
-              <input type="text" id="edit-strong" placeholder="e.g. CPSC 233, MATH 211" />
-            </div>
-          
-            <div class="form-group" id="group-weak">
-              <label for="edit-weak">Weak Courses (separate with commas):</label>
-              <input type="text" id="edit-weak" placeholder="e.g. CPSC 355, MATH 211" />
-            </div>
-          
-            <div class="form-group" id="group-teach">
-              <label for="edit-teach">Courses You Teach (separate with commas):</label>
-              <input type="text" id="edit-teach" placeholder="e.g. CPSC 233, MATH 211" />
-            </div>
-          
-            <div class="form-group">
-              <label for="edit-password">Password (leave blank to keep current):</label>
-              <input type="password" id="edit-password" placeholder="••••••••" autocomplete="new-password" />
-            </div>
-          
-            <button type="submit" class="save-button">Save</button>
-          </form>                    
+            <span class="close-button">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="edit-firstname">First Name:</label>
+                    <input type="text" id="edit-firstname" placeholder="First Name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-lastname">Last Name:</label>
+                    <input type="text" id="edit-lastname" placeholder="Last Name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-education">Education Level:</label>
+                    <input type="text" id="edit-education" placeholder="e.g. Undergraduate – 2nd Year" />
+                </div>
+
+                <div class="form-group" id="group-strong">
+                    <label for="edit-strong">Strong Courses (separate with commas):</label>
+                    <input type="text" id="edit-strong" placeholder="e.g. CPSC 233, MATH 211" />
+                </div>
+
+                <div class="form-group" id="group-weak">
+                    <label for="edit-weak">Weak Courses (separate with commas):</label>
+                    <input type="text" id="edit-weak" placeholder="e.g. CPSC 355, MATH 211" />
+                </div>
+
+                <div class="form-group" id="group-teach">
+                    <label for="edit-teach">Courses You Teach (separate with commas):</label>
+                    <input type="text" id="edit-teach" placeholder="e.g. CPSC 233, MATH 211" />
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-password">Password (leave blank to keep current):</label>
+                    <input type="password" id="edit-password" placeholder="••••••••" autocomplete="new-password" />
+                </div>
+
+                <button type="submit" class="save-button">Save</button>
+            </form>
         </div>
     </div>
 
@@ -325,7 +329,7 @@
         const modal = document.getElementById("editProfileModal");
         const closeBtn = document.querySelector(".close-button");
         const openBtns = document.querySelectorAll(".open-edit-modal");
-    
+
         openBtns.forEach(btn => {
             btn.onclick = () => {
                 modal.classList.remove("hidden");
@@ -334,8 +338,8 @@
                 const role = data.role;
 
                 const [firstName, lastName] = data.firstName && data.lastName
-                ? [data.firstName, data.lastName]
-                : (document.getElementById('profile-name').textContent.split(" "));
+                    ? [data.firstName, data.lastName]
+                    : (document.getElementById('profile-name').textContent.split(" "));
 
                 document.getElementById("edit-firstname").value = firstName || "";
                 document.getElementById("edit-lastname").value = lastName || "";
@@ -347,71 +351,73 @@
                 document.getElementById("group-teach").style.display = "none";
 
                 if (role === "student") {
-                document.getElementById("group-strong").style.display = "block";
-                document.getElementById("group-weak").style.display = "block";
-                document.getElementById("edit-strong").value = data.profile?.strongCourses?.join(", ") || "";
-                document.getElementById("edit-weak").value = data.profile?.weakCourses?.join(", ") || "";
+                    document.getElementById("group-strong").style.display = "block";
+                    document.getElementById("group-weak").style.display = "block";
+                    document.getElementById("edit-strong").value = data.profile?.strongCourses?.join(", ") || "";
+                    document.getElementById("edit-weak").value = data.profile?.weakCourses?.join(", ") || "";
                 } else if (role === "tutor") {
-                document.getElementById("group-teach").style.display = "block";
-                document.getElementById("edit-teach").value = data.profile?.teachCourses?.join(", ") || "";
+                    document.getElementById("group-teach").style.display = "block";
+                    document.getElementById("edit-teach").value = data.profile?.teachCourses?.join(", ") || "";
                 }
             };
-            });
+        });
 
         closeBtn.onclick = () => {
-        modal.classList.add("hidden");
+            modal.classList.add("hidden");
         };
-    
+
         // Submit form
         document.getElementById("editProfileForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-    
-        const passwordInput = document.getElementById("edit-password").value.trim();
+            e.preventDefault();
 
-        let profile = {};
+            const passwordInput = document.getElementById("edit-password").value.trim();
 
-        if (window.currentProfileData.role === "student") {
-        profile.strongCourses = document.getElementById("edit-strong").value.split(",").map(c => c.trim());
-        profile.weakCourses = document.getElementById("edit-weak").value.split(",").map(c => c.trim());
-        } else if (window.currentProfileData.role === "tutor") {
-        profile.teachCourses = document.getElementById("edit-teach").value.split(",").map(c => c.trim());
-        }
+            let profile = {};
 
-        const payload = {
-            firstName: document.getElementById("edit-firstname").value,
-            lastName: document.getElementById("edit-lastname").value,
-            educationLevel: document.getElementById("edit-education").value,
-            role: window.currentProfileData.role,
-            profile
-        };
-
-        if (passwordInput !== "") {
-            payload.password = passwordInput;}
-    
-        try {
-            const res = await fetch(`/api/profile/update?email=${userEmail}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-            });
-    
-            const result = await res.json();
-            if (res.ok) {
-            alert("Profile updated!");
-            modal.classList.add("hidden");
-           // document.getElementById("edit-password").value = "";
-            location.reload();  // Reload to reflect updates
-            } else {
-            alert(result.error || "Failed to update profile.");
+            if (window.currentProfileData.role === "student") {
+                profile.strongCourses = document.getElementById("edit-strong").value.split(",").map(c => c.trim());
+                profile.weakCourses = document.getElementById("edit-weak").value.split(",").map(c => c.trim());
+            } else if (window.currentProfileData.role === "tutor") {
+                profile.teachCourses = document.getElementById("edit-teach").value.split(",").map(c => c.trim());
             }
-        } catch (err) {
-            console.error("Update failed", err);
-            alert("Something went wrong.");
-        }
+
+            const payload = {
+                firstName: document.getElementById("edit-firstname").value,
+                lastName: document.getElementById("edit-lastname").value,
+                educationLevel: document.getElementById("edit-education").value,
+                role: window.currentProfileData.role,
+                profile
+            };
+
+            if (passwordInput !== "") {
+                payload.password = passwordInput;
+            }
+
+            try {
+                const res = await fetch(`/api/profile/update?email=${userEmail}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+                if (res.ok) {
+                    alert("Profile updated!");
+                    modal.classList.add("hidden");
+                    // document.getElementById("edit-password").value = "";
+                    location.reload();  // Reload to reflect updates
+                } else {
+                    alert(result.error || "Failed to update profile.");
+                }
+            } catch (err) {
+                console.error("Update failed", err);
+                alert("Something went wrong.");
+            }
         });
     </script>
+
 
 </body>
 

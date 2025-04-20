@@ -80,7 +80,10 @@ if (userEmail) {
 
       } else if (data.role === "tutor") {
         const tutorEmail = userEmail;
-
+        const navHome = document.getElementById("nav-home");
+        const mobileNavHome = document.getElementById("mobile-nav-home");
+        if (navHome) navHome.style.display = "none";
+        if (mobileNavHome) mobileNavHome.style.display = "none";
         function loadStudentsForChat() {
           fetch("/api/get-students-for-chat", {
             method: "POST",
