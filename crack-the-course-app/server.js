@@ -40,10 +40,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/welcome.html");
 });
 
-// Start the Express server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+
 
 // MongoDB connection setup using MongoClient
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -76,7 +73,16 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     app.get("/api/get-tutor-rate", getTutorRate(db));
 
 
+    app.post("/api/profile_update", profileUpdates(db));
+    app.put("/api/profile/update", profileUpdates(db));
+
     // populate_data().catch(console.dir);
+
+    // Start the Express server
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
+
   })
   .catch((error) => console.error("Failed to connect to MongoDB:", error));
   
@@ -203,10 +209,12 @@ app.post('/api/login', async (req, res) => {
 //Can use these to get it running through your html file scripts
 // app.get("/api/profile", profileRoute(db));
 
+
 //app.post("/api/profile_update", profileUpdates(db));
 
 //app.get("/api/chat", chat_get(db));
 //app.post("/api/chat", chat_send_recieve(db));
+
 
 //// app.post("/api/likes", likes_post(db));
 // //pp.get("/api/likes", likes_get(db));

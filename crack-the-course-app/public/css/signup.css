@@ -118,3 +118,26 @@ button:hover{
     text-align: center;
     font-weight: lighter;
 }
+
+/* Normalize placeholder color */
+.choices__placeholder {
+    color: #6b7280 !important;
+  }
+  
+.choices[data-hidden="true"] {
+    display: none !important;
+  }
+  
+  .user-info label {
+    display: block;
+    margin-top: 20px;
+  }
+  
+.user-info select,
+.user-info input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
