@@ -41,7 +41,10 @@ function searchTutorsByCourse(db) {
 }
 
 
-// Searches for the chat counterparts of a user (sent and received).  
+
+
+// Searches for chat counterparts for a user, filtering by a search term (e.g., partner's name).
+// It returns the partner's firstName, lastName, email, and any chat details from the current user's document.
 function searchChats(db) {
     return async (req, res) => {
       // Expect a query parameter of user's email, e.g., ?email=user@example.com

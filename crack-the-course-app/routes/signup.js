@@ -14,7 +14,7 @@ function signupRoute(db) {
         role,
         school = "University of Calgary",
         educationLevel,
-        profile = {}
+        profile = {},
       } = req.body;
   
       try {
@@ -59,7 +59,9 @@ function signupRoute(db) {
           chats_recieved: {}, // empty object by default
           chats_sent: {}
         },
-        likes: {}
+        likes: {},
+        rate : 0,
+        ratings:{}
       });
 
       return res.status(201).json({ message: "Signup successful" });

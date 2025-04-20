@@ -18,6 +18,10 @@ const {getPendingAndAcceptedStudents} = require("./routes/student");
 const { searchTutorsByCourse, searchChats, getAllCourses } = require("./routes/search");
 const { acceptStudentRequest } = require("./routes/student");
 const bcrypt = require("bcrypt");
+const { rateTutor, getTutorAverageRating } = require("./routes/ratings");
+const { resetPassword } = require("./routes/reset_password");
+const { updateTutorRate, getTutorRate } = require("./routes/tutor_rates");
+
 
 
 // MongoDB URI connection string
@@ -45,19 +49,29 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     db = client.db("CrackTheCourse");  // Get database
     console.log("Connected to MongoDB");
 
+    //Can use these to get it running through your html file scripts
     app.post("/api/signup", signupRoute(db));
-    app.get("/api/profile", profileRoute(db));
-
     app.get("/api/search/tutors", searchTutorsByCourse(db));
     app.get("/api/search/chats", searchChats(db));
     app.get("/api/search/courses", getAllCourses(db));
     app.post('/api/get-tutors-for-chat', getAcceptedTutors(db));
 
     app.post("/api/chat-get", chat_get(db));
-    app.post("/api/chat", chat_send_recieve(db));
     app.post("/api/get-students-for-chat", getPendingAndAcceptedStudents(db))
     app.post("/api/accept-student-request", acceptStudentRequest(db));
     app.post("/api/sendRequest", sendTutorRequest(db));
+    app.get("/api/profile", profileRoute(db));
+    app.post("/api/profile_update", profileUpdates(db));
+    app.get("/api/chat", chat_get(db));
+    app.post("/api/chat", chat_send_recieve(db));
+    app.post("/api/likes", likes_post(db));
+    app.get("/api/likes", likes_get(db));
+    app.post("/api/rate-tutor", rateTutor(db));
+    app.get("/api/rate-tutor", getTutorAverageRating(db));
+    app.post("/api/reset-password", resetPassword(db));
+    app.post("/api/update-tutor-rate", updateTutorRate(db));
+    app.get("/api/get-tutor-rate", getTutorRate(db));
+
 
     app.post("/api/profile_update", profileUpdates(db));
     app.put("/api/profile/update", profileUpdates(db));
@@ -129,7 +143,28 @@ async function populate_data() {
       likes: []
       
     },
+      {
+    firstName: "Taylor",
+    lastName: "Teach",
+    email: "taylor@tutor.com",
+    password: await bcrypt.hash("taylor123", 10),
+    school: "University of Calgary",
+    educationLevel: "Graduate - MSc",
+    role: "tutor",
+    profile: {
+      weakCourses: [],
+      strongCourses: [],
+      teachCourses: ["CPSC 251", "SENG 300"]
+    },
+    chats: {
+      chats_recieved: {},
+      chats_sent: {}
+    },
+    likes: []
+  },
+
   ]);
+  
 
   console.log("User data populated successfully.");
 }
@@ -157,7 +192,7 @@ app.post('/api/login', async (req, res) => {
 */
 
     //compare the plaintext password with the stored hash
-  const passwordMatches = await bcrypt.compare(password, user.password);
+    const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) {
       console.log(password)
       console.log(user.password)
@@ -175,12 +210,15 @@ app.post('/api/login', async (req, res) => {
 // app.get("/api/profile", profileRoute(db));
 
 
+//app.post("/api/profile_update", profileUpdates(db));
 
-// app.get("/api/chat", chat_get(db));
-// app.post("/api/chat", chat_send_recieve(db));
+//app.get("/api/chat", chat_get(db));
+//app.post("/api/chat", chat_send_recieve(db));
 
-app.post("/api/likes", likes_post(db));
-app.get("/api/likes", likes_get(db));
+
+//// app.post("/api/likes", likes_post(db));
+// //pp.get("/api/likes", likes_get(db));
+
 
 // app.post("/api/signup", signupRoute(db))
 
