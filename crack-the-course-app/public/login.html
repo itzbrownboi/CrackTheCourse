@@ -45,7 +45,7 @@
                 <input type="password" class="forgot-password" placeholder="" />
                 <br><br>
                 <div style="display: flex; gap: 20rem;">
-                  <button type="submit" class="reset-button">SUBMIT</button> 
+                  <button type="button" class="reset-button">SUBMIT</button> 
                   <button onclick="closePopup()">Cancel</button>
                 </div>
                 
@@ -72,7 +72,7 @@
     document.getElementById("overlay").style.display = "none";
   }
 
-    document.getElementById('login-form').addEventListener('submit', async function (e) {
+  document.getElementById('login-form').addEventListener('submit', async function (e) {
   e.preventDefault(); 
 
   const email = document.getElementById('email').value;
@@ -101,7 +101,33 @@
     console.error(error);
   }
   
-});
+  });
+  document.querySelector('.reset-button').addEventListener('click', async e => {
+    const email = document.querySelector('.forgot-email').value;
+    const newPassword = document.querySelector('.forgot-password').value;
+    if (!email || !newPassword) {
+      alert('Please enter both email and new password.');
+      return;
+    }
+    try {
+      const res = await fetch('/api/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, newPassword })
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        alert(data.message); 
+        closePopup();
+      } else {
+        alert(data.message || 'Reset failed.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error resetting password.');
+    }
+  });
   </script>
 </body>
 </html>
