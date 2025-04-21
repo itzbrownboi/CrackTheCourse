@@ -21,6 +21,7 @@ const bcrypt = require("bcrypt");
 const { rateTutor, getTutorAverageRating } = require("./routes/ratings");
 const { resetPassword } = require("./routes/reset_password");
 const { updateTutorRate, getTutorRate } = require("./routes/tutor_rates");
+const {deleteTutor} = require("./routes/tutors"); 
 
 
 
@@ -71,6 +72,8 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     app.post("/api/reset-password", resetPassword(db));
     app.post("/api/update-tutor-rate", updateTutorRate(db));
     app.get("/api/get-tutor-rate", getTutorRate(db));
+
+    app.delete("/api/delete-tutor", deleteTutor(db));
 
 
     app.post("/api/profile_update", profileUpdates(db));

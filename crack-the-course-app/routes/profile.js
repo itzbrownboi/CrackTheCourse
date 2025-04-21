@@ -38,6 +38,18 @@ function profileRoute(db) {
           },
           likes: {}
         });
+      } else if(user.role === 'admin'){
+        return res.json({
+          role: user.role,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          school: user.school,
+          educationLevel: user.educationLevel,
+          profile: {
+            teachCourses: user.profile.teachCourses
+          },
+          likes: {}
+        });
       } else {
         return res.status(400).json({ error: "Invalid role" });
       }

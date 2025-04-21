@@ -33,10 +33,14 @@ if (userEmail) {
 
       // remove homepage for tutor
       if (data.role === "tutor") {
-        const navHome = document.getElementById("nav-home");
-        const mobileNavHome = document.getElementById("mobile-nav-home");
-        if (navHome) navHome.style.display = "none";
-        if (mobileNavHome) mobileNavHome.style.display = "none";
+        hideNavSection("home");
+      }else if(data.role === "admin"){
+        const idSuffixes = ["home", "chat"];
+        idSuffixes.forEach(hideNavSection);
+        document.getElementById("nav-mytutors-link").textContent = "Manage Tutors";
+        document.getElementById('nav-mytutors-link').href = 'admintutors.html';
+        document.getElementById('mobile-nav-mytutors-link').textContent = "Manage Tutors";
+        document.getElementById('mobile-nav-mytutors').href = 'admintutors.html';
       }
     })
     .catch(error => {
@@ -44,4 +48,12 @@ if (userEmail) {
     });
 } else {
   console.error("User email not found in localStorage.");
+}
+
+
+function hideNavSection(idSuffix) {
+  const nav = document.getElementById(`nav-${idSuffix}`);
+  const mobileNav = document.getElementById(`mobile-nav-${idSuffix}`);
+  if (nav) nav.style.display = "none";
+  if (mobileNav) mobileNav.style.display = "none";
 }

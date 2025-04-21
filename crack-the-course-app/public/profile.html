@@ -27,18 +27,18 @@
                         <img class="home-logo" src="images/home-black.png" alt="Home logo">
                         <a href="home.html" class="logo-text">Homepage</a>
                     </div>
-                    <div class="student" onclick="window.location.href='mytutors.html'">
+                    <div class="student" id="nav-mytutors" onclick="window.location.href='mytutors.html'">
                         <img class="student-logo" src="images/tutor.jpg" alt="Tutor logo">
-                        <a href="mytutors.html" class="logo-text">My Tutors</a>
+                        <a href="mytutors.html" class="logo-text" id="nav-mytutors-link">My Tutors</a>
                     </div>
-                    <div class="chat" onclick="window.location.href='chat.html'">
+                    <div class="chat" id="nav-chat" onclick="window.location.href='chat.html'">
                         <img class="chat-logo" src="images/chat.png" alt="Chat logo">
                         <a href="chat.html" class="logo-text">Messages</a>
                     </div>
                 </div>
-                <div class="person" onclick="window.location.href='profile.html'">
+                <div class="person" id="nav-profile" onclick="window.location.href='profile.html'">
                     <img class="person-logo" src="images/person.png" alt="Person logo">
-                    <a href="profile.html" class="logo-text">My Profile</a>
+                    <a href="profile.html" class="logo-text" id="nav-profile-link">My Profile</a>
                 </div>
             </div>
             <div class="divider"></div>
@@ -84,6 +84,10 @@
                             </div>
                         </div>
                     </div>
+                    <button id="sign-out-button" class="sign-out-button">Sign Out</button>
+
+
+
 
                     <!-- Activity Section -->
                     <!-- <div class="activity-section">
@@ -104,7 +108,7 @@
         </div>
 
         <!-- Mobile View -->
-        <div class="mobile-view" id="mobile-nav-home">
+        <div class="mobile-view">
             <div class="mobile-content">
                 <div class="edit-button">
                     <i data-lucide="edit-2"></i>
@@ -144,6 +148,7 @@
                         </div>
                     </div>
                 </div>
+                <button id="sign-out-button-mobile" class="sign-out-button">Sign Out</button>
 
                 <!-- Activity Section -->
                 <!-- <div class="activity-section">
@@ -163,19 +168,19 @@
 
             <!-- Mobile Navigation -->
             <div class="mobile-nav">
-                <a href="home.html" class="mobile-nav-item active">
+                <a href="home.html" class="mobile-nav-item active" id="mobile-nav-home">
                     <img src="images/home-black.png" alt="Home" class="nav-icon">
                     <span>Home</span>
                 </a>
-                <a href="mytutors.html" class="mobile-nav-item">
+                <a href="mytutors.html" class="mobile-nav-item" id="mobile-nav-mytutors">
                     <img src="images/tutor.jpg" alt="My Tutors" class="nav-icon">
-                    <span>My Tutors</span>
+                    <span id="mobile-nav-mytutors-link">My Tutors</span>
                 </a>
-                <a href="chat.html" class="mobile-nav-item">
+                <a href="chat.html" class="mobile-nav-item" id="mobile-nav-chat">
                     <img src="images/chat.png" alt="Messages" class="nav-icon">
                     <span>Messages</span>
                 </a>
-                <a href="profile.html" class="mobile-nav-item">
+                <a href="profile.html" class="mobile-nav-item" id="mobile-nav-profile">
                     <img src="images/person.png" alt="Profile" class="nav-icon">
                     <span>Profile</span>
                 </a>
@@ -186,6 +191,12 @@
     <script>
         // Retrieve the email from localStorage
         const userEmail = localStorage.getItem('userEmail');
+        function hideNavSection(idSuffix) {
+            const nav = document.getElementById(`nav-${idSuffix}`);
+            const mobileNav = document.getElementById(`mobile-nav-${idSuffix}`);
+            if (nav) nav.style.display = "none";
+            if (mobileNav) mobileNav.style.display = "none";
+        }
 
         // Fetch profile data based on email
         if (userEmail) {
@@ -212,9 +223,12 @@
                     const tutorCoursesMobile = document.getElementById('tutor-courses-mobile');
 
                     profileName.textContent = `${data.firstName} ${data.lastName}`;
+                    document.getElementById('profile-name-mobile').textContent = `${data.firstName} ${data.lastName}`;
+                    document.getElementById('profile-info-mobile').textContent = data.educationLevel;
                     profileInfo.textContent = data.educationLevel;
-
+                    console.log(data.role);
                     if (data.role === 'tutor') {
+
                         studentCoursesStrong.style.display = 'none';
                         studentCoursesWeak.style.display = 'none';
                         tutorCourses.style.display = 'block';
@@ -235,10 +249,9 @@
                                 <p>${data.profile.teachCourses.join(', ')}</p>
                             </div>
                             `;
-                        const navHome = document.getElementById("nav-home");
-                        const mobileNavHome = document.getElementById("mobile-nav-home");
-                        if (navHome) navHome.style.display = "none";
-                        if (mobileNavHome) mobileNavHome.style.display = "none";
+                        // remove homepage for tutor
+                        hideNavSection("home");
+
                     } else if (data.role === 'student') {
                         studentCoursesStrong.style.display = 'block';
                         studentCoursesStrong.innerHTML = `
@@ -269,6 +282,22 @@
                                 </div>
                                 `;
                         tutorCoursesMobile.style.display = 'none';
+                    } else if (data.role === 'admin') {
+                        document.getElementById('nav-mytutors-link').href = 'admintutors.html';
+                        document.getElementById('nav-mytutors-link').textContent = "Manage Tutors";
+                        document.getElementById('mobile-nav-mytutors-link').textContent = "Manage Tutors";
+                        document.getElementById('mobile-nav-mytutors').href = 'admintutors.html';
+                        profileInfo.textContent = "Role: Administrator";
+                        document.getElementById('university-info').textContent = "Only admins can see this view";
+                        studentCoursesStrong.style.display = 'none';
+                        studentCoursesWeak.style.display = 'none';
+                        tutorCourses.style.display = 'none';
+                        studentCoursesMobileStrong.style.display = 'none';
+                        studentCoursesMobileWeak.style.display = 'none';
+                        tutorCoursesMobile.style.display = 'none';
+                        const idSuffixes = ["home", "chat"];
+                        idSuffixes.forEach(hideNavSection);
+
                     }
                 })
                 .catch(error => {
@@ -277,6 +306,19 @@
         } else {
             console.error("User email not found in localStorage.");
         }
+
+        document.getElementById('sign-out-button').addEventListener('click', () => {
+            localStorage.removeItem('userEmail'); // Clear the stored email
+            window.location.href = 'welcome.html'; // Redirect to welcome page
+        });
+
+        document.getElementById('sign-out-button-mobile').addEventListener('click', () => {
+            localStorage.removeItem('userEmail'); // Clear the stored email
+            window.location.href = 'welcome.html'; // Redirect to welcome page
+        });
+
+
+
     </script>
 
     <!-- Edit Profile Modal -->

@@ -1,83 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome</title>
-  <link rel="stylesheet" href="css/admintutors.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Tutors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
 </head>
+
 <body>
-  <div class="container">
-    <div class="left-part" style="flex: 1; background-color: white;">
-        <div >
-            <img class="logo" src="images/logo.jpeg" alt="App logo">
-        </div>
-        <div>
-            <div class="student" onclick="window.location.href='mytutors.html'">
-                <img class="student-logo" src="images/tutor-black.png"  alt="Tutor logo">
-                <p class="logo-text">My Tutors</p>
+    <div class="desktop-view">
+        <div class="left-part">
+            <div>
+                <img class="logo" src="images/logo.jpeg" alt="App logo">
+            </div>
+            <div>
+                <div class="home" id="nav-home">
+                    <img class="home-logo" src="images/home-black.png" alt="Home logo">
+                    <a href="home.html" class="logo-text">Homepage</a>
+                </div>
+                <div class="student" id="nav-mytutors" onclick="window.location.href='mytutors.html'">
+                    <img class="student-logo" src="images/tutor.jpg" alt="Tutor logo">
+                    <a href="mytutors.html" class="logo-text" id="nav-mytutors-link">My Tutors</a>
+                </div>
+                <div class="chat" id="nav-chat" onclick="window.location.href='chat.html'">
+                    <img class="chat-logo" src="images/chat.png" alt="Chat logo">
+                    <a href="chat.html" class="logo-text">Messages</a>
+                </div>
+            </div>
+            <div class="person" id="nav-profile" onclick="window.location.href='profile.html'">
+                <img class="person-logo" src="images/person.png" alt="Person logo">
+                <a href="profile.html" class="logo-text" id="nav-profile-link">My Profile</a>
             </div>
         </div>
-        <div class="person" onclick="window.location.href='profile.html'">
-            <img class="person-logo" src="images/person.png"  alt="Person logo">
-            <p class="logo-text">My Profile</p>
+        <div class="divider"></div>
+        <div class="middle-part">
+            <header class="top-bar">
+                <div class="user-welcome">
+                    <h1 id="profile-name">Hello, Stu</h1>
+                    <p>Review Tutors Below</p>
+                </div>
+                <div class="home-user-avatar">
+                    <img src="images/profile.png" alt="User Avatar">
+                </div>
+            </header>
+
+            <div class="search-container">
+                <input type="search" placeholder="Search by course..." class="search-input">
+            </div>
+
+
+            <section class="tutors-section">
+                <div class="section-header">
+                    <h2>Tutors</h2>
+                    <!-- <button class="view-all">View All</button> -->
+                </div>
+
+                <div class="course-filters">
+                    <button class="filter-btn active" data-course="all">All</button>
+                    <button class="filter-btn" data-course="CPSC 413">CPSC 413</button>
+                    <button class="filter-btn" data-course="SENG 300">SENG 300</button>
+                    <button class="filter-btn" data-course="CPSC 251">CPSC 251</button>
+                </div>
+
+
+                <div class="tutors-grid">
+                    <!-- Tutor cards will be inserted here by JavaScript -->
+                </div>
+            </section>
         </div>
     </div>
-    <div class="divider"></div>
-    <div class="middle-part" style="flex: 7; background-color: white;">
-        <div style="display: flex; height: auto;">
-            <div>
-                <p class="pagetitle">Tutor Review</p>
-                <p class="pagetitle" style="font-size: small;color: gray;">Pending Tutors</p>    
-            </div>
-        </div>
-       <div class="pending-tutors">
-        <div class="pend-tut">
-            <div class="pend-tut1">
-                <div class="tut-desc">
-                    <div class="tut-name">Ray Sunshine</div>
-                    <div class="see-more"  onclick="window.location.href='profile.html'" >See more...</div>
-                </div>
-                <div class="tut-pic">
-                    <img class="profile-pic1" src="images/profile.png" alt="Student-profile">
-                </div>
-            </div>
-            <div class="approve-reject">
-                <button class="approve">Approve</button>
-                <button class="reject"> Reject</button>
-            </div>
-        </div>
-       </div>
-       
 
-        <div class="current" >
-            <div style="display: flex;">
-                <p style="text-align: left;margin-bottom: 1rem; font-size: small;color: gray;">Approved Tutors</p>
-            </div>
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="home.html" class="mobile-nav-item active" id="mobile-nav-home">
+            <img src="images/home-black.png" alt="Home" class="nav-icon">
+            <span>Home</span>
+        </a>
+        <a href="mytutors.html" class="mobile-nav-item" id="mobile-nav-mytutors">
+            <img src="images/tutor.jpg" alt="My Tutors" class="nav-icon">
+            <span id="mobile-nav-mytutors-link">My Tutors</span>
+        </a>
+        <a href="chat.html" class="mobile-nav-item" id="mobile-nav-chat">
+            <img src="images/chat.png" alt="Messages" class="nav-icon">
+            <span>Messages</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item" id="mobile-nav-profile">
+            <img src="images/person.png" alt="Profile" class="nav-icon">
+            <span>Profile</span>
+        </a>
+    </nav>
+    <div id="requestModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Tutor Profile</h2>
+            <p><strong>Name:</strong> <span id="reviewName"></span></p>
+            <p><strong>School:</strong> <span id="reviewSchool"></span></p>
+            <p><strong>Education Level:</strong> <span id="reviewEducation"></span></p>
+            <p><strong>Rating:</strong> <span>★</span> <span id="reviewRating"></span></p>
+            <p><strong>Courses:</strong> <span id="reviewCourses"></span></p>
+            <button id="deleteTutorBtn">Delete Tutor</button>
         </div>
-        
-        <div class="user-display">
-            <div class="chat-student">
-                <img class="profile-pic1" src="images/profile.png" alt="Student-profile">
-                <div class="student-desc" style="text-align: left; display: flex; gap: 50%;">
-                    <div>
-                        <div style="display: flex; gap: 10%; text-align: left;">
-                            <p style=" color: grey; font-size: small; white-space: nowrap;">Tina Liu</p>
-                        </div>
-                        <div style="display: flex; gap: 10%; text-align: left;">
-                            <p style=" color: grey; font-size: small; ">$20/hr</p>
-                        </div>
-                    </div>
-               </div>
-            </div>
-        </div> 
-    </div>   
-  </div>
-  <script>
-    function changeImage() {
-      const img = document.getElementById("likeheart");
-      img.src = img.src.includes("images/white-heart.png") ? "images/red-heart.png" : "images/white-heart.png";
-    }
-    </script>
+    </div>
+
+    <script src="js/rolecheck.js"></script>
+    <script src="js/admintutors.js"></script>
 </body>
+
 </html>
