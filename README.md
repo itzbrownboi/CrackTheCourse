@@ -41,7 +41,7 @@ crack-the-course-app/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -76,7 +76,7 @@ Visit: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🐳 Deploying with Docker
+## Deploying with Docker
 
 ### 1. Build the Docker Image
 
@@ -92,7 +92,7 @@ docker run -p 3000:3000 crackthecourse
 
 ---
 
-## 🔐 User Roles
+## User Roles
 
 | Role    | Access Features                           |
 |---------|-------------------------------------------|
@@ -114,10 +114,10 @@ docker run -p 3000:3000 crackthecourse
 
 ## 📌 Future Improvements
 
-- 🧠 Intelligent tutor matching (based on ratings & tags)
-- 📅 Booking system & availability calendars
-- 📹 Video integration (Zoom or Jitsi)
-- ⚙️ Admin dashboard & moderation
+- Intelligent tutor matching (based on ratings & tags)
+- Booking system & availability calendars
+- Video integration (Zoom or Jitsi)
+- Admin dashboard & moderation
 
 ---
 
