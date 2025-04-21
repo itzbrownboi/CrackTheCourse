@@ -112,3 +112,54 @@ button:hover{
     font-weight: normal;
     margin-top: 60px;
 }
+
+
+@media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+      width: 100%;
+    }
+  
+    .left-half,
+    .right-half {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .divider {
+      display: none;
+    }
+  
+    .user-type {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .admin {
+      grid-column: auto;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  
+    .pic {
+      width: 100px;
+      height: 100px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    .return-user {
+      margin-top: 40px;
+    }
+  
+    .login-box {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  
