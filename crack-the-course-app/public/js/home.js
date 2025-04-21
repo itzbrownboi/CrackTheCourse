@@ -1,36 +1,4 @@
-// const userEmail = localStorage.getItem("userEmail");
-
-// // Fetch profile data based on email
-// if (userEmail) {
-//   fetch(`/api/profile?email=${userEmail}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       if (data.error) {
-//         console.error(data.error);
-//         return;
-//       }
-
-//       // Update the profile information based on the returned data
-//       const profileName = document.getElementById("profile-name");
-//       if (data.role === "student") {
-//         profileName.textContent = `Hello, ${data.firstName}`;
-//       } else if (data.role === "tutor") {
-//         profileName.textContent = `Hello, ${data.firstName}`;
-      
-//         const navHome = document.getElementById("nav-home");
-//         const mobileNavHome = document.getElementById("mobile-nav-home");
-      
-//         if (navHome) navHome.style.display = "none";
-//         if (mobileNavHome) mobileNavHome.style.display = "none";
-//       }
-      
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching profile data:", error);
-//     });
-// } else {
-//   console.error("User email not found in localStorage.");
-// }
+const userEmail2 = localStorage.getItem("userEmail");
 
 // Function to fetch tutors from the backend
 async function fetchTutors(course = "all", searchTerm = "") {
@@ -85,10 +53,6 @@ function createTutorCard(tutor) {
       <div class="tutor-school">School: ${tutor.school}</div>
       <div class="tutor-education">Education: ${tutor.educationLevel}</div>
       <div class="tutor-courses">${tutor.profile.teachCourses.join(', ')}</div>
-      <div class="tutor-rating">
-        <span>★</span>
-        <span>${tutor.rating || "4.5"}</span>
-      </div>
     </div>
     <div class="tutor-actions">
       <button class="action-btn request-btn">Message</button>
@@ -194,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch("/api/sendRequest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tutorEmail: currentTutorEmail, studentEmail: userEmail, message })
+        body: JSON.stringify({ tutorEmail: currentTutorEmail, studentEmail: userEmail2, message })
       });
 
       const data = await res.json();
