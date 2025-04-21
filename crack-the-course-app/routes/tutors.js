@@ -111,6 +111,42 @@ function getAcceptedTutors(db) {
   };
 }
 
+function deleteTutor(db) {
+  return async (req, res) => {
+    console.log("Deleting tutor...");
+
+    const { firstName, lastName, email } = req.body;
+
+    if (!firstName || !lastName || !email) {
+      console.error("Missing fields:", { firstName, lastName, email });
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    try {
+      const usersCollection = db.collection("users");
+
+      const deleteResult = await usersCollection.deleteOne({
+        firstName,
+        lastName,
+        email
+      });
+
+      if (deleteResult.deletedCount === 0) {
+        console.warn("Tutor not found:", { firstName, lastName, email });
+        return res.status(404).json({ error: "Tutor not found or already deleted" });
+      }
+
+      console.log("Tutor deleted successfully.");
+      return res.status(200).json({ message: "Tutor deleted successfully" });
+
+    } catch (err) {
+      console.error("Error deleting tutor:", err);
+      return res.status(500).json({ error: "Server error while deleting tutor" });
+    }
+  };
+}
 
 
-module.exports = { sendTutorRequest, getAcceptedTutors};
+
+
+module.exports = { sendTutorRequest, getAcceptedTutors, deleteTutor};

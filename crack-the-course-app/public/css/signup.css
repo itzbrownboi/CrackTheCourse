@@ -141,3 +141,101 @@ button:hover{
     height: 40px;
     font-family: 'Poppins', sans-serif;
   }
+
+
+
+@media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+      width: 100%;
+    }
+  
+    .left-half,
+    .right-half {
+      flex: none;
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .right-half {
+      padding-top: 0;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  
+    .divider {
+      display: none;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  
+    .login-logo {
+      width: 80px;
+    }
+  
+    button {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .left-half {
+      font-size: 16px;
+    }
+  
+    .right-half {
+      font-size: 18px;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  
+    .name-input, .email-input, .password-input, .confirm-password-input, .admin-code {
+      height: 35px;
+    }
+  
+    .courses {
+      height: 35px;
+    }
+  
+    .welcome {
+      font-size: small;
+    }
+  
+    .old-user {
+      flex-direction: column;
+      gap: 2px;
+      font-size: xx-small;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .left-half {
+      font-size: 14px;
+    }
+  
+    .sell {
+      font-size: x-small;
+    }
+  
+    .logo {
+      width: 120px;
+    }
+  
+    .login-logo {
+      width: 70px;
+    }
+  
+    .right-half {
+      font-size: 16px;
+    }
+  
+    button {
+      font-size: small;
+      padding: 8px;
+      width: 100%;
+    }
+  }
+  
