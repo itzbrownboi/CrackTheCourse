@@ -2,14 +2,14 @@
 FROM node:18
 
 # Set working directory inside the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
 # Copy the rest of your app
-COPY . .
+COPY crack-the-course-app .
 
 # Expose the port your app runs on
 EXPOSE 3000
