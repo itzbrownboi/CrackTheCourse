@@ -59,6 +59,13 @@
           if (mobileTutorNav) {
             mobileTutorNav.textContent = "My Students";
           }
+        }else if(data.role === "admin"){
+          const idSuffixes = ["home", "chat"];
+          idSuffixes.forEach(hideNavSection);
+          document.getElementById("nav-mytutors-link").textContent = "Manage Tutors";
+          document.getElementById('nav-mytutors-link').href = 'admintutors.html';
+          document.getElementById('mobile-nav-mytutors-link').textContent = "Manage Tutors";
+          document.getElementById('mobile-nav-mytutors').href = 'admintutors.html';
         }
       })
       .catch(error => {
@@ -68,3 +75,10 @@
     console.error("User email not found in localStorage.");
   }
 })();
+
+function hideNavSection(idSuffix) {
+  const nav = document.getElementById(`nav-${idSuffix}`);
+  const mobileNav = document.getElementById(`mobile-nav-${idSuffix}`);
+  if (nav) nav.style.display = "none";
+  if (mobileNav) mobileNav.style.display = "none";
+}
