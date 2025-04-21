@@ -1,6 +1,7 @@
 
 //import { profileRoute } from "./routes/profile";
 // Importing necessary libraries for Express and MongoDB
+require("dotenv").config();
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const app = express();
@@ -26,7 +27,7 @@ const {deleteTutor} = require("./routes/tutors");
 
 
 // MongoDB URI connection string
-const uri = "mongodb+srv://janebmagai:ctcAdmin2025@crackthecourse.ddhnjjo.mongodb.net/?retryWrites=true&w=majority&appName=CrackTheCourse";
+const uri = process.env.MONGODB_URI;
 let client;
 let db;
 
