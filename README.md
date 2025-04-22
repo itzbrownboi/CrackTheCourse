@@ -64,7 +64,6 @@ MONGODB_URI=your-mongodb-uri-here
 ```
 
 Make sure you have connected to MongoDB Atlas and have URI 
-> Don’t expose your MongoDB URI publicly. This file is excluded from version control.
 
 ### 4. Run the Server Locally
 
