@@ -109,6 +109,7 @@ docker run -p 3000:3000 crackthecourse
 - HTML/CSS/Vanilla JS
 - Docker (for containerized deployment)
 - bcrypt (for secure password hashing)
+- render (for live deployment)
 
 ---
 
@@ -121,7 +122,7 @@ docker run -p 3000:3000 crackthecourse
 
 ---
 
-## 🤝 Contributors
+## 🤝 Team
 
 - Ebun Makinde
 - Erioluwa Soyemi
